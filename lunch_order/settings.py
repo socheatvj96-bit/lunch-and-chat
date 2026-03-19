@@ -215,6 +215,7 @@ LOGOUT_REDIRECT_URL = 'login'
 # Supabase (chat)
 SUPABASE_URL = os.environ.get('SUPABASE_URL', '')
 SUPABASE_KEY = os.environ.get('SUPABASE_KEY', '')
+SUPABASE_WEBHOOK_SECRET = os.environ.get('SUPABASE_WEBHOOK_SECRET', '')
 
 # Cache (Redis)
 CACHES = {
