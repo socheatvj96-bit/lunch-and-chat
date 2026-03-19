@@ -66,25 +66,22 @@ def user_login(request):
                 'telegram_id': employee.telegram_id or '',
                 'min_balance_limit': float(employee.min_balance_limit),
                 'can_make_order': employee.can_make_order(),
+                'avatar_url': employee.avatar.url if employee.avatar else None,
             }
         })
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
 
 
-def user_app(request):
-    """Главная страница мини-приложения для пользователей"""
-    # Проверяем, есть ли параметр авторизации в URL или сессии
+def _app_context(request):
+    """Общий контекст для user_app и chat_app."""
     employee_id = request.GET.get('employee_id') or request.session.get('employee_id')
-    
-    # Get system logo
     logo_url = None
     config = SystemConfig.objects.first()
     if config and config.logo:
         logo_url = config.logo.url
-
     from django.conf import settings as django_settings
-    context = {
+    return {
         'employee_id': employee_id,
         'is_telegram': request.GET.get('tgWebAppStartParam') is not None,
         'logo_url': logo_url,
@@ -92,8 +89,43 @@ def user_app(request):
         'SUPABASE_KEY': django_settings.SUPABASE_KEY,
         'VAPID_PUBLIC_KEY': django_settings.VAPID_PUBLIC_KEY,
     }
-    
-    return render(request, 'orders/user_app.html', context)
+
+
+def user_app(request):
+    """Главная страница мини-приложения для пользователей"""
+    return render(request, 'orders/user_app.html', _app_context(request))
+
+
+def chat_app(request, contact_name=None):
+    """Прямая ссылка на чат — открывает вкладку Чат, опционально сразу с нужным контактом."""
+    ctx = _app_context(request)
+    ctx['initial_tab'] = 'chat'
+    ctx['initial_chat'] = contact_name or ''
+    return render(request, 'orders/user_app.html', ctx)
+
+
+def serve_sw(request):
+    """Отдаёт service worker из корня сайта — чтобы scope покрывал все страницы."""
+    import os
+    sw_path = os.path.join(settings.BASE_DIR, 'orders', 'static', 'orders', 'sw.js')
+    try:
+        with open(sw_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+    except FileNotFoundError:
+        return HttpResponse('// sw not found', content_type='application/javascript', status=404)
+    response = HttpResponse(content, content_type='application/javascript')
+    response['Service-Worker-Allowed'] = '/'
+    response['Cache-Control'] = 'no-store'
+    return response
+
+
+@csrf_exempt
+def app_logout(request):
+    """Выход из аккаунта мини-приложения."""
+    from django.contrib.auth import logout as auth_logout
+    auth_logout(request)
+    request.session.flush()
+    return JsonResponse({'success': True})
 
 
 def get_employees_list(request):

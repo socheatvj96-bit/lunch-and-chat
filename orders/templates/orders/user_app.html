@@ -1050,6 +1050,9 @@
                             <div onclick="showTopUpModal()"
                                 style="cursor: pointer; background: var(--secondary-color); color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 16px; box-shadow: 0 2px 5px rgba(0,0,0,0.2);"
                                 title="Пополнить баланс">+</div>
+                            <div id="user-avatar-header" onclick="linkTelegram()" style="display:none;cursor:pointer;flex-shrink:0;" title="Профиль">
+                                <img id="user-avatar-img" src="" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.5);">
+                            </div>
                         </div>
                     </div>
 
@@ -1133,16 +1136,22 @@
                             <button onclick="switchTab('menu')" style="background:#f0f0f0;border:none;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:13px;white-space:nowrap;">← Меню</button>
                             <span style="font-weight:700;font-size:17px;">💬 Чат</span>
                         </div>
-                        <!-- PWA install + support buttons -->
-                        <div style="display:flex;gap:8px;margin-bottom:12px;">
+                        <!-- PWA install + support + push buttons -->
+                        <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
                             <button id="pwa-install-btn" onclick="installPWA()" style="
-                                display:none;flex:1;padding:9px 12px;border-radius:10px;border:none;
+                                display:none;flex:1;min-width:120px;padding:9px 12px;border-radius:10px;border:none;
                                 background:linear-gradient(135deg,#4caf50,#388e3c);color:white;
                                 font-size:13px;font-weight:600;cursor:pointer;">
                                 📲 Установить приложение
                             </button>
+                            <button id="push-enable-btn" onclick="enablePushNotifications()" style="
+                                flex:1;min-width:120px;padding:9px 12px;border-radius:10px;border:none;
+                                background:linear-gradient(135deg,#667eea,#764ba2);color:white;
+                                font-size:13px;font-weight:600;cursor:pointer;">
+                                🔔 Уведомления
+                            </button>
                             <button onclick="openSupport()" style="
-                                flex:1;padding:9px 12px;border-radius:10px;border:none;
+                                flex:1;min-width:120px;padding:9px 12px;border-radius:10px;border:none;
                                 background:#ff9800;color:white;font-size:13px;font-weight:600;cursor:pointer;">
                                 🆘 Написать в поддержку
                             </button>
@@ -1288,10 +1297,27 @@
         let allCategories = new Set();
         let systemSettings = {};
 
+        // Server-side initial tab/chat from URL
+        const INITIAL_TAB = '{{ initial_tab|default:"" }}';
+        const INITIAL_CHAT = '{{ initial_chat|default:"" }}';
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function () {
             checkAuthStatus();
             fetchSettings();
+            if (INITIAL_TAB === 'chat') {
+                switchTab('chat');
+                if (INITIAL_CHAT) {
+                    // Wait for contacts to load then open DM
+                    const waitAndOpen = setInterval(() => {
+                        if (allContacts && allContacts.length) {
+                            clearInterval(waitAndOpen);
+                            const c = allContacts.find(x => x.name === INITIAL_CHAT);
+                            if (c) openChat(c.name, c.label);
+                        }
+                    }, 300);
+                }
+            }
             const urlParams = new URLSearchParams(window.location.search);
             const employeeId = urlParams.get('employee_id');
 
@@ -1427,6 +1453,13 @@
         function updateBalance() {
             if (currentEmployee) {
                 document.getElementById('balance').textContent = currentEmployee.balance.toFixed(2);
+                // Show avatar in header if available
+                const avatarEl = document.getElementById('user-avatar-header');
+                const avatarImg = document.getElementById('user-avatar-img');
+                if (currentEmployee.avatar_url && avatarEl && avatarImg) {
+                    avatarImg.src = currentEmployee.avatar_url;
+                    avatarEl.style.display = 'block';
+                }
             }
         }
 
@@ -1508,7 +1541,7 @@
                                     <button class="btn" onclick="document.getElementById('avatar-file-input').click()" style="flex:1;background:#667eea;">📷 Аватарка</button>
                                     <button class="btn" onclick="closeModal()" style="flex:1;background:#ccc;color:#333;">Закрыть</button>
                                 </div>`;
-                            modal.style.display = 'flex';
+                            document.getElementById('modal').classList.add('show');
                         } else {
                             showModal('Ошибка', data.error || 'Не удалось создать ссылку', false);
                         }
@@ -2118,6 +2151,7 @@
                 body.style.overflow = 'hidden';
                 if (cart) cart.style.display = 'none';
                 initChat();
+                updatePushBtn();
             } else {
                 if (mainHeader) mainHeader.style.visibility = '';
                 if (mainHeader) mainHeader.style.pointerEvents = '';
@@ -2256,12 +2290,9 @@
         }
 
         function logout() {
-            fetch('/app/logout/', { method: 'POST' }) // Assuming endpoint exists or just reload
-                .then(() => {
-                    window.location.reload();
-                })
-                .catch(() => {
-                    window.location.reload();
+            fetch('/app/logout/', { method: 'POST', credentials: 'include' })
+                .finally(() => {
+                    window.location.href = '/app/login/';
                 });
         }
 
@@ -2391,9 +2422,9 @@
 
         // ── PWA + Push ───────────────────────────────────────────────────
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/static/orders/sw.js')
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
                 .then(reg => { window._swReg = reg; })
-                .catch(() => {});
+                .catch(e => console.warn('SW register error:', e));
         }
 
         function doUploadAvatar(input) {
@@ -2425,13 +2456,30 @@
             return Uint8Array.from([...raw].map(c => c.charCodeAt(0)));
         }
 
+        async function enablePushNotifications() {
+            if (!('Notification' in window) || !('PushManager' in window)) {
+                showModal('Ошибка', 'Ваш браузер не поддерживает уведомления', false);
+                return;
+            }
+            if (!VAPID_PUBLIC_KEY || VAPID_PUBLIC_KEY === '') {
+                showModal('Ошибка', 'Push не настроен на сервере', false);
+                return;
+            }
+            const permission = await Notification.requestPermission();
+            if (permission !== 'granted') {
+                showModal('Отказано', 'Разрешение на уведомления не выдано', false);
+                return;
+            }
+            await subscribeToPush();
+            showModal('Готово', 'Push-уведомления включены!', true);
+        }
+
         async function subscribeToPush() {
             if (!('Notification' in window) || !('PushManager' in window)) return;
             if (!VAPID_PUBLIC_KEY || VAPID_PUBLIC_KEY === '') return;
             if (!currentEmployee) return;
-
-            const permission = await Notification.requestPermission();
-            if (permission !== 'granted') return;
+            // Only auto-subscribe if permission already granted (don't prompt)
+            if (Notification.permission !== 'granted') return;
 
             try {
                 const reg = window._swReg || await navigator.serviceWorker.ready;
@@ -2455,6 +2503,20 @@
                     })
                 });
             } catch(e) { console.warn('Push subscribe error:', e); }
+        }
+
+        // Update push button state
+        function updatePushBtn() {
+            const btn = document.getElementById('push-enable-btn');
+            if (!btn) return;
+            if (!('Notification' in window)) { btn.style.display = 'none'; return; }
+            if (Notification.permission === 'granted') {
+                btn.textContent = '🔔 Уведомления ✓';
+                btn.style.background = 'linear-gradient(135deg,#2e7d32,#1b5e20)';
+            } else if (Notification.permission === 'denied') {
+                btn.textContent = '🔕 Уведомления заблокированы';
+                btn.style.background = '#999';
+            }
         }
 
         window.addEventListener('beforeinstallprompt', e => {

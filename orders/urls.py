@@ -30,7 +30,11 @@ urlpatterns = [
     path('admin/images/<int:image_id>/set-primary/', web_views.set_primary_image, name='set_primary_image'),
     
     # User mini-app
+    path('sw.js', user_views.serve_sw, name='serve_sw'),
     path('app/', user_views.user_app, name='user_app'),
+    path('app/chat/', user_views.chat_app, name='chat_app'),
+    path('app/chat/<str:contact_name>/', user_views.chat_app, name='chat_app_contact'),
+    path('app/logout/', user_views.app_logout, name='app_logout'),
     path('app/login/', user_views.user_login, name='user_login'),
     path('app/register/', user_views.user_register, name='user_register'),
     path('app/check-auth/', user_views.check_auth, name='check_auth'),

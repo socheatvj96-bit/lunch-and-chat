@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{% block userlinks %}
+{{ block.super }}
+{% endblock %}
+{% block nav-global %}
+<div style="background:#1a252f;padding:6px 16px;display:flex;flex-wrap:wrap;gap:10px;font-size:12px;border-bottom:1px solid #333;">
+    <a href="/secret/svodka/" target="_blank" style="color:#7ec8e3;text-decoration:none;">📊 Сводка</a>
+    <a href="/secret/svodka-mob/" target="_blank" style="color:#7ec8e3;text-decoration:none;">📱 Сводка моб</a>
+    <a href="/secret/svodka-mob2/" target="_blank" style="color:#7ec8e3;text-decoration:none;">📱 Сводка моб2</a>
+    <a href="/backup-db/" target="_blank" style="color:#f0ad4e;text-decoration:none;">💾 Бэкап БД</a>
+    <a href="/spora/" target="_blank" style="color:#7ec8e3;text-decoration:none;">🌱 Спора</a>
+    <a href="/i_am_secret_file.csv" target="_blank" style="color:#7ec8e3;text-decoration:none;">📄 CSV</a>
+    <a href="/app/" target="_blank" style="color:#5cb85c;text-decoration:none;">📱 Мини-приложение</a>
+    <a href="/admin/orders/pushsubscription/send-push/" style="color:#e57373;text-decoration:none;font-weight:bold;">🔔 Отправить Push</a>
+</div>
+{% endblock %}

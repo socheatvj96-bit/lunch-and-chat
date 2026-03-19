@@ -7,7 +7,8 @@ from django.utils import timezone
 from django.utils.html import format_html
 from .models import (
     Employee, Restaurant, MenuItemGroup, MenuItem, MenuItemImage,
-    Order, OrderItem, BalanceTransaction, WorkDayCalendar, Settings, ProductCategory, SystemConfig, GlobalWorkDay
+    Order, OrderItem, BalanceTransaction, WorkDayCalendar, Settings, ProductCategory, SystemConfig, GlobalWorkDay,
+    WeekCompanyAmount, PushSubscription
 )
 import csv
 import io
@@ -1360,6 +1361,74 @@ class GlobalWorkDayAdmin(ExportCsvMixin, admin.ModelAdmin):
             'fields': ('date', 'day_type', 'comment')
         }),
     )
+
+
+@admin.register(WeekCompanyAmount)
+class WeekCompanyAmountAdmin(ExportCsvMixin, admin.ModelAdmin):
+    actions = ['export_as_csv']
+    list_display = ['week_start', 'amount', 'created_at']
+    ordering = ['-week_start']
+
+
+@admin.register(PushSubscription)
+class PushSubscriptionAdmin(admin.ModelAdmin):
+    list_display = ['employee_name', 'endpoint_short', 'created_at']
+    search_fields = ['employee_name']
+    ordering = ['-created_at']
+    readonly_fields = ['employee_name', 'endpoint', 'p256dh', 'auth', 'created_at']
+
+    def endpoint_short(self, obj):
+        return obj.endpoint[:60] + '...' if len(obj.endpoint) > 60 else obj.endpoint
+    endpoint_short.short_description = 'Endpoint'
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom = [
+            path('send-push/', self.admin_site.admin_view(self.send_push_view), name='pushsubscription_send_push'),
+        ]
+        return custom + urls
+
+    def send_push_view(self, request):
+        from django.conf import settings as dj_settings
+        context = {'title': 'Отправить Push всем подписчикам', **self.admin_site.each_context(request)}
+        if request.method == 'POST':
+            text = request.POST.get('text', '').strip()
+            title = request.POST.get('title', '').strip() or 'Обеды ПМ'
+            if not text:
+                context['error'] = 'Введите текст'
+            else:
+                try:
+                    from pywebpush import webpush, WebPushException
+                    import json as _json
+                    private_key = dj_settings.VAPID_PRIVATE_KEY
+                    claims_email = dj_settings.VAPID_CLAIMS_EMAIL
+                    payload = _json.dumps({'title': title, 'body': text, 'sender': '', 'recipient': ''})
+                    sent, failed = 0, 0
+                    for sub in PushSubscription.objects.all():
+                        try:
+                            webpush(
+                                subscription_info={'endpoint': sub.endpoint, 'keys': {'p256dh': sub.p256dh, 'auth': sub.auth}},
+                                data=payload,
+                                vapid_private_key=private_key,
+                                vapid_claims={'sub': f'mailto:{claims_email}'},
+                            )
+                            sent += 1
+                        except WebPushException as e:
+                            status = e.response.status_code if e.response else 0
+                            if status in (404, 410):
+                                sub.delete()
+                            else:
+                                failed += 1
+                    context['success'] = f'Отправлено: {sent}, ошибок: {failed}'
+                except Exception as e:
+                    context['error'] = str(e)
+        context['subscribers_count'] = PushSubscription.objects.count()
+        return render(request, 'admin/orders/push_send.html', context)
+
+    def changelist_view(self, request, extra_context=None):
+        extra_context = extra_context or {}
+        extra_context['send_push_url'] = 'send-push/'
+        return super().changelist_view(request, extra_context=extra_context)
 
 
 # ============== CUSTOM PRODUCT IMPORT VIEW ==============
