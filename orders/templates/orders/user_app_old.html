@@ -1,0 +1,1395 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#3390ec">
+    <title>Заказ обедов</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .balance-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .login-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px 10px;
+            user-select: none;
+        }
+
+        .password-toggle:hover {
+            color: #764ba2;
+        }
+
+        .support-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .support-link:hover {
+            background: #f5f5f5;
+            border-color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            background: #fee;
+            color: #c33;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #c33;
+        }
+
+        .week-selector {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .week-days {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .day-btn {
+            flex: 1;
+            padding: 12px 8px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            min-width: 70px;
+        }
+
+        .day-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .day-btn.has-order {
+            border-color: #4caf50;
+            background: #e8f5e9;
+        }
+
+        .day-btn.past {
+            opacity: 0.5;
+            background: #f5f5f5;
+        }
+
+        .day-btn .day-name {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .day-btn .day-date {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .menu-section {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-section h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 20px;
+        }
+
+        .menu-item {
+            display: flex;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        .menu-item.selected {
+            border-color: #4caf50;
+            background: #e8f5e9;
+        }
+
+        .menu-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 15px;
+            background: #f0f0f0;
+        }
+
+        .menu-item-info {
+            flex: 1;
+        }
+
+        .menu-item-name {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .menu-item-description {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .menu-item-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .menu-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quantity-value {
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .menu-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .menu-item.hidden {
+            display: none;
+        }
+
+        .menu-item.zero-price {
+            border-color: #f44336;
+            background: #fff5f5;
+        }
+
+        .menu-item.zero-price .menu-item-price {
+            color: #f44336;
+        }
+
+        .admin-attention-btn {
+            padding: 8px 12px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .cart {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            border-top: 2px solid #e0e0e0;
+            z-index: 1000;
+        }
+
+        .cart-content {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .cart-items-count {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .orders-list {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .order-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .order-date {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .order-status {
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .order-status.reserved {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .order-status.confirmed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .order-items {
+            margin-top: 10px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-total {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 2px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .tabs {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            padding: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .modal-icon.success {
+            color: #4caf50;
+        }
+
+        .modal-icon.error {
+            color: #f44336;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-message {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .modal-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .modal-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Экран авторизации/регистрации -->
+        <div id="login-screen" class="container">
+            <div class="login-form">
+                <!-- Вкладки временно скрыты, регистрация отключена -->
+                <!-- <div class="tabs" style="margin-bottom: 20px;">
+                    <div class="tab active" id="login-tab" onclick="switchAuthTab('login')">Вход</div>
+                    <div class="tab" id="register-tab" onclick="switchAuthTab('register')">Регистрация</div>
+                </div> -->
+
+                <!-- Форма входа -->
+                <div id="login-form">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <img src="{% static 'orders/pm_mini_logo.svg' %}" alt="Logo" style="width: 80px; height: auto;">
+                    </div>
+                    <h2>Вход в систему</h2>
+                    <div id="login-error" class="error-message" style="display: none;"></div>
+                    <div class="form-group">
+                        <label>Логин</label>
+                        <input type="text" id="username" placeholder="Введите логин" autocomplete="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="Введите пароль"
+                                autocomplete="current-password">
+                            <button type="button" class="password-toggle" onclick="togglePassword()">Показать</button>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="handleLogin()">Войти</button>
+                    <a href="https://t.me/dinner_in_pm" target="_blank" class="support-link">
+                        💬 Обратиться за поддержкой
+                    </a>
+                </div>
+
+                <!-- Форма регистрации (временно отключена) -->
+                <div id="register-form" style="display: none;">
+                    <h2>Регистрация</h2>
+                    <div class="error-message"
+                        style="display: block; background: #fff3cd; color: #856404; border-color: #ffc107;">
+                        <strong>Регистрация временно отключена</strong><br>
+                        Для создания учетной записи обратитесь к администратору.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основной экран приложения -->
+        <div id="main-screen" style="display: none;">
+            <div class="header">
+                <img src="{% static 'orders/pm_mini_logo.svg' %}" alt="Logo"
+                    style="width: 50px; height: auto; margin-bottom: 10px; background: rgba(255,255,255,0.2); padding: 5px; border-radius: 10px;">
+                <h1>🍽 Заказ обедов</h1>
+                <div class="balance-info" id="balance-info">
+                    Баланс: <span id="balance">0</span>₽
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Вкладки -->
+                <div class="tabs">
+                    <div class="tab active" onclick="switchTab('menu')">Меню</div>
+                    <div class="tab" onclick="switchTab('orders')">Мои заказы</div>
+                </div>
+
+                <!-- Вкладка меню -->
+                <div id="menu-tab">
+                    <!-- Выбор дня недели -->
+                    <div class="week-selector">
+                        <div class="week-days" id="week-days"></div>
+                    </div>
+
+                    <!-- Поиск по меню -->
+                    <input type="text" id="menu-search" class="search-box" placeholder="🔍 Поиск блюд..."
+                        style="display: none;">
+
+                    <!-- Меню на выбранный день -->
+                    <div id="menu-content">
+                        <div class="loading">Загрузка меню...</div>
+                    </div>
+                </div>
+
+                <!-- Вкладка заказов -->
+                <div id="orders-tab" style="display: none;">
+                    <div id="orders-content">
+                        <div class="loading">Загрузка заказов...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Корзина -->
+            <div class="cart" id="cart" style="display: none;">
+                <div class="cart-content">
+                    <div>
+                        <div class="cart-total">Итого: <span id="cart-total">0</span>₽</div>
+                        <div class="cart-items-count">Товаров: <span id="cart-count">0</span></div>
+                    </div>
+                    <button class="btn" onclick="submitOrder()" id="submit-btn">Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Модальное окно -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-icon" id="modal-icon">✅</div>
+                <div class="modal-title" id="modal-title">Успешно</div>
+                <div class="modal-message" id="modal-message"></div>
+                <button class="modal-btn" onclick="closeModal()">ОК</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Telegram Web App инициализация
+        let tg = window.Telegram?.WebApp;
+        if (tg) {
+            tg.ready();
+            tg.expand();
+        }
+
+        let currentEmployee = null;
+        let currentDate = new Date().toISOString().split('T')[0];
+        let cart = {}; // {menu_item_id: {item: {...}, quantity: number, date: 'YYYY-MM-DD'}}
+        let weekMenu = {};
+        let employeeOrders = {};
+        let searchTerm = '';
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function () {
+            // Сначала проверяем, авторизован ли пользователь
+            checkAuthStatus();
+
+            // Проверяем, есть ли employee_id в URL (из Telegram)
+            const urlParams = new URLSearchParams(window.location.search);
+            const employeeId = urlParams.get('employee_id');
+
+            // Получаем Telegram ID из Telegram WebApp
+            let telegramId = null;
+            if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+                telegramId = tg.initDataUnsafe.user.id.toString();
+                // Автоматически заполняем Telegram ID в форме регистрации
+                const regTelegramId = document.getElementById('reg-telegram-id');
+                if (regTelegramId) {
+                    regTelegramId.value = telegramId;
+                }
+            }
+
+            // Загружаем меню сразу, даже без авторизации (для просмотра)
+            loadWeekMenu();
+
+            if (employeeId) {
+                // Автоматический вход по employee_id (для Telegram)
+                loadEmployeeInfo(employeeId);
+            }
+
+            initWeekSelector();
+            initSearch();
+        });
+
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.querySelector('.password-toggle');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.textContent = 'Скрыть';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.textContent = 'Показать';
+            }
+        }
+
+        function checkAuthStatus() {
+            fetch('/app/check-auth/', {
+                method: 'GET',
+                credentials: 'include'
+            })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success && data.authenticated && data.employee) {
+                        // Пользователь уже авторизован
+                        currentEmployee = data.employee;
+                        document.getElementById('login-screen').style.display = 'none';
+                        document.getElementById('main-screen').style.display = 'block';
+                        initApp();
+                    } else {
+                        // Пользователь не авторизован, показываем экран входа
+                        document.getElementById('login-screen').style.display = 'block';
+                        document.getElementById('main-screen').style.display = 'none';
+                    }
+                })
+                .catch(err => {
+                    console.error('Ошибка проверки авторизации:', err);
+                    // В случае ошибки показываем экран входа
+                    document.getElementById('login-screen').style.display = 'block';
+                });
+        }
+
+        function switchAuthTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+
+            if (tab === 'login') {
+                document.getElementById('login-tab').classList.add('active');
+                document.getElementById('login-form').style.display = 'block';
+                document.getElementById('register-form').style.display = 'none';
+            } else {
+                document.getElementById('register-tab').classList.add('active');
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('register-form').style.display = 'block';
+            }
+        }
+
+        function handleRegister() {
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const username = document.getElementById('reg-username').value.trim();
+            const password = document.getElementById('reg-password').value;
+            const telegramId = document.getElementById('reg-telegram-id').value.trim();
+
+            // Получаем Telegram ID из Telegram WebApp, если не указан
+            let finalTelegramId = telegramId;
+            if (!finalTelegramId && tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+                finalTelegramId = tg.initDataUnsafe.user.id.toString();
+            }
+
+            // Валидация на клиенте
+            if (!name || name.length < 2) {
+                showRegisterError('Имя должно содержать минимум 2 символа');
+                return;
+            }
+
+            if (!email) {
+                showRegisterError('Email обязателен');
+                return;
+            }
+
+            if (!username || username.length < 3) {
+                showRegisterError('Логин должен содержать минимум 3 символа');
+                return;
+            }
+
+            if (!password || password.length < 4) {
+                showRegisterError('Пароль должен содержать минимум 4 символа');
+                return;
+            }
+
+            fetch('/app/register/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    username,
+                    password,
+                    telegram_id: finalTelegramId || null
+                })
+            })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        showModal('Регистрация успешна!', data.message || 'Ваша учетная запись ожидает подтверждения администратором.', true);
+                        // Переключаемся на вкладку входа через 2 секунды
+                        setTimeout(() => {
+                            switchAuthTab('login');
+                            // Очищаем форму регистрации
+                            document.getElementById('reg-name').value = '';
+                            document.getElementById('reg-email').value = '';
+                            document.getElementById('reg-username').value = '';
+                            document.getElementById('reg-password').value = '';
+                            closeModal();
+                        }, 2000);
+                    } else {
+                        if (data.errors) {
+                            // Показываем первую ошибку
+                            const firstError = Object.values(data.errors)[0];
+                            showModal('Ошибка регистрации', firstError, false);
+                        } else {
+                            showModal('Ошибка регистрации', data.error || 'Произошла ошибка при регистрации', false);
+                        }
+                    }
+                })
+                .catch(err => {
+                    showModal('Ошибка', 'Ошибка соединения с сервером', false);
+                });
+        }
+
+        function showRegisterError(message) {
+            showModal('Ошибка регистрации', message, false);
+        }
+
+        function initWeekSelector() {
+            const weekDays = document.getElementById('week-days');
+            weekDays.innerHTML = '';
+
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0];
+            const dayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(today);
+                date.setDate(today.getDate() + i);
+                const dateStr = date.toISOString().split('T')[0];
+                const dayName = dayNames[date.getDay()];
+                const dayNum = date.getDate();
+                const month = date.getMonth() + 1;
+                const isPast = dateStr < todayStr;
+
+                const dayBtn = document.createElement('div');
+                dayBtn.className = 'day-btn' + (i === 0 ? ' active' : '') + (isPast ? ' past' : '');
+                dayBtn.onclick = () => selectDay(dateStr, dayBtn);
+                dayBtn.innerHTML = `
+                    <div class="day-name">${dayName}</div>
+                    <div class="day-date">${dayNum}.${month}</div>
+                `;
+                dayBtn.dataset.date = dateStr;
+                weekDays.appendChild(dayBtn);
+            }
+        }
+
+        function selectDay(dateStr, btnElement) {
+            currentDate = dateStr;
+
+            // Обновляем активную кнопку
+            document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Загружаем меню на выбранный день
+            loadMenu(dateStr);
+            updateCartDisplay();
+        }
+
+        function showModal(title, message, isSuccess = true) {
+            const modal = document.getElementById('modal');
+            const modalIcon = document.getElementById('modal-icon');
+            const modalTitle = document.getElementById('modal-title');
+            const modalMessage = document.getElementById('modal-message');
+
+            modalIcon.textContent = isSuccess ? '✅' : '❌';
+            modalIcon.className = 'modal-icon ' + (isSuccess ? 'success' : 'error');
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+
+            modal.classList.add('show');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('show');
+        }
+
+        // Закрытие модалки при клике вне её
+        document.addEventListener('click', function (event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (!username || !password) {
+                showModal('Ошибка', 'Введите логин и пароль', false);
+                return;
+            }
+
+            fetch('/app/login/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        currentEmployee = data.employee;
+                        showModal('Успешно!', 'Вы успешно авторизованы', true);
+
+                        // Очищаем поля формы
+                        document.getElementById('username').value = '';
+                        document.getElementById('password').value = '';
+
+                        setTimeout(() => {
+                            document.getElementById('login-screen').style.display = 'none';
+                            document.getElementById('main-screen').style.display = 'block';
+                            initApp();
+                            closeModal();
+                        }, 1500);
+                    } else {
+                        showModal('Ошибка входа', data.error || 'Неверные учетные данные', false);
+                    }
+                })
+                .catch(err => {
+                    showModal('Ошибка', 'Ошибка соединения с сервером', false);
+                });
+        }
+
+        function loadEmployeeInfo(employeeId) {
+            fetch(`/app/employee/${employeeId}/`)
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        currentEmployee = data.employee;
+                        showModal('Успешно!', 'Вы успешно авторизованы', true);
+                        setTimeout(() => {
+                            document.getElementById('login-screen').style.display = 'none';
+                            document.getElementById('main-screen').style.display = 'block';
+                            initApp();
+                            closeModal();
+                        }, 1500);
+                    } else {
+                        showModal('Ошибка', 'Ошибка загрузки данных', false);
+                    }
+                })
+                .catch(err => {
+                    showModal('Ошибка', 'Ошибка соединения с сервером', false);
+                });
+        }
+
+        function initApp() {
+            updateBalance();
+            loadWeekMenu();
+            loadEmployeeOrders();
+            selectDay(currentDate, document.querySelector('.day-btn.active'));
+        }
+
+        function updateBalance() {
+            if (currentEmployee) {
+                document.getElementById('balance').textContent = currentEmployee.balance.toFixed(2);
+            }
+        }
+
+        function loadWeekMenu() {
+            fetch('/app/menu/week/')
+                .then(r => {
+                    if (!r.ok) {
+                        throw new Error(`HTTP error! status: ${r.status}`);
+                    }
+                    return r.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        weekMenu = data.week_menu;
+                        console.log('Меню загружено:', Object.keys(weekMenu).length, 'дней');
+                        // Загружаем меню для текущей даты только если пользователь авторизован
+                        if (currentEmployee) {
+                            loadMenu(currentDate);
+                        } else {
+                            // Если не авторизован, показываем меню на сегодня для просмотра
+                            loadMenu(currentDate);
+                        }
+                    } else {
+                        console.error('Ошибка загрузки меню:', data.error);
+                        const menuContent = document.getElementById('menu-content');
+                        if (menuContent) {
+                            menuContent.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><div>Ошибка загрузки меню: ' + (data.error || 'Неизвестная ошибка') + '</div></div>';
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.error('Ошибка загрузки меню:', err);
+                    const menuContent = document.getElementById('menu-content');
+                    if (menuContent) {
+                        menuContent.innerHTML = '<div class="empty-state"><div class="empty-state-icon">⚠️</div><div>Ошибка соединения с сервером</div></div>';
+                    }
+                });
+        }
+
+        function initSearch() {
+            const searchInput = document.getElementById('menu-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchTerm = e.target.value.toLowerCase();
+                    loadMenu(currentDate);
+                });
+            }
+        }
+
+        function matchesSearch(item) {
+            if (!searchTerm) return true;
+            return item.name.toLowerCase().includes(searchTerm) ||
+                (item.description && item.description.toLowerCase().includes(searchTerm)) ||
+                (item.restaurant && item.restaurant.toLowerCase().includes(searchTerm));
+        }
+
+        function isPastDate(dateStr) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const checkDate = new Date(dateStr);
+            checkDate.setHours(0, 0, 0, 0);
+            return checkDate < today;
+        }
+
+        function loadMenu(dateStr) {
+            const menuContent = document.getElementById('menu-content');
+            const searchBox = document.getElementById('menu-search');
+            const isPast = isPastDate(dateStr);
+
+            if (!weekMenu[dateStr] || weekMenu[dateStr].length === 0) {
+                menuContent.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🍽</div><div>Меню на этот день пока нет</div></div>';
+                if (searchBox) searchBox.style.display = 'none';
+                return;
+            }
+
+            // Показываем поиск только если есть меню
+            if (searchBox) searchBox.style.display = 'block';
+
+            let html = '';
+            let hasVisibleItems = false;
+
+            weekMenu[dateStr].forEach(group => {
+                let groupHtml = `<div class="menu-section"><h3>${group.group_name}</h3>`;
+                let groupHasItems = false;
+
+                group.items.forEach(item => {
+                    // Фильтрация по поиску
+                    if (!matchesSearch(item)) return;
+
+                    groupHasItems = true;
+                    hasVisibleItems = true;
+
+                    const cartKey = `${dateStr}_${item.id}`;
+                    const inCart = cart[cartKey];
+                    const quantity = inCart ? inCart.quantity : 0;
+                    const disabledClass = isPast ? 'disabled' : '';
+                    const isZeroPrice = item.price === 0;
+                    const zeroPriceClass = isZeroPrice ? 'zero-price' : '';
+
+                    groupHtml += `
+                        <div class="menu-item ${quantity > 0 ? 'selected' : ''} ${disabledClass} ${zeroPriceClass}" data-item-id="${item.id}" data-date="${dateStr}">
+                            ${item.image ? `<img src="${item.image}" class="menu-item-image" alt="${item.name}">` : '<div class="menu-item-image"></div>'}
+                            <div class="menu-item-info">
+                                <div class="menu-item-name">${item.name}</div>
+                                ${item.description ? `<div class="menu-item-description">${item.description}</div>` : ''}
+                                ${(item.weight || item.calories) ? `<div class="menu-item-description" style="font-size: 13px; color: #888; margin-top: 3px;">${item.weight ? item.weight : ''}${item.weight && item.calories ? ' • ' : ''}${item.calories ? item.calories + ' ккал' : ''}</div>` : ''}
+                                ${(item.protein || item.fat || item.carbohydrates) ? `<div class="menu-item-description" style="font-size: 12px; color: #999; margin-top: 2px;">БЖУ: ${item.protein || '-'}/${item.fat || '-'}/${item.carbohydrates || '-'}</div>` : ''}
+                                ${item.composition ? `<div class="menu-item-description" style="font-size: 12px; color: #666; margin-top: 3px; font-style: italic;">${item.composition.substring(0, 80)}${item.composition.length > 80 ? '...' : ''}</div>` : ''}
+                                <div class="menu-item-price">${item.price}₽</div>
+                                ${!isPast ? (isZeroPrice ?
+                            `<a href="https://t.me/dinner_in_pm" target="_blank" class="admin-attention-btn">⚠️ Сообщить админу</a>` :
+                            `<div class="menu-item-quantity">
+                                        <div class="quantity-btn" onclick="changeQuantity(${item.id}, '${dateStr}', -1)">−</div>
+                                        <div class="quantity-value">${quantity}</div>
+                                        <div class="quantity-btn" onclick="changeQuantity(${item.id}, '${dateStr}', 1)">+</div>
+                                    </div>`
+                        ) : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                if (groupHasItems) {
+                    groupHtml += '</div>';
+                    html += groupHtml;
+                }
+            });
+
+            if (!hasVisibleItems && searchTerm) {
+                html = '<div class="empty-state"><div class="empty-state-icon">🔍</div><div>Ничего не найдено</div></div>';
+            } else if (!hasVisibleItems) {
+                html = '<div class="empty-state"><div class="empty-state-icon">🍽</div><div>Меню на этот день пока нет</div></div>';
+            }
+
+            menuContent.innerHTML = html;
+            updateCartDisplay();
+        }
+
+        function changeQuantity(itemId, dateStr, delta) {
+            // Проверяем, что это не прошедшая дата
+            if (isPastDate(dateStr)) {
+                showModal('Внимание', 'Нельзя изменять заказ на прошедшую дату', false);
+                return;
+            }
+
+            const cartKey = `${dateStr}_${itemId}`;
+            const menu = weekMenu[dateStr];
+            if (!menu) return;
+
+            // Находим товар
+            let item = null;
+            for (const group of menu) {
+                item = group.items.find(i => i.id === itemId);
+                if (item) break;
+            }
+
+            if (!item) return;
+
+            if (!cart[cartKey]) {
+                cart[cartKey] = { item, quantity: 0, date: dateStr };
+            }
+
+            cart[cartKey].quantity = Math.max(0, cart[cartKey].quantity + delta);
+
+            if (cart[cartKey].quantity === 0) {
+                delete cart[cartKey];
+            }
+
+            loadMenu(dateStr);
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartForDate = Object.values(cart).filter(c => c.date === currentDate);
+            const total = cartForDate.reduce((sum, c) => sum + (c.item.price * c.quantity), 0);
+            const count = cartForDate.reduce((sum, c) => sum + c.quantity, 0);
+
+            document.getElementById('cart-total').textContent = total.toFixed(2);
+            document.getElementById('cart-count').textContent = count;
+
+            if (count > 0) {
+                document.getElementById('cart').style.display = 'block';
+            } else {
+                document.getElementById('cart').style.display = 'none';
+            }
+        }
+
+        function submitOrder() {
+            if (!currentEmployee) {
+                showModal('Ошибка', 'Необходима авторизация', false);
+                return;
+            }
+
+            // Проверяем, что это не прошедшая дата
+            if (isPastDate(currentDate)) {
+                showModal('Ошибка', 'Нельзя оформить заказ на прошедшую дату', false);
+                return;
+            }
+
+            const cartForDate = Object.values(cart).filter(c => c.date === currentDate);
+            if (cartForDate.length === 0) {
+                showModal('Ошибка', 'Выберите блюда для заказа', false);
+                return;
+            }
+
+            // Группируем по группам товаров
+            const itemsByGroup = {};
+            cartForDate.forEach(cartItem => {
+                // Находим группу товара
+                let groupId = null;
+                for (const group of weekMenu[currentDate] || []) {
+                    const item = group.items.find(i => i.id === cartItem.item.id);
+                    if (item) {
+                        groupId = group.group_id;
+                        break;
+                    }
+                }
+
+                if (!itemsByGroup[groupId]) {
+                    itemsByGroup[groupId] = [];
+                }
+
+                itemsByGroup[groupId].push({
+                    menu_item_id: cartItem.item.id,
+                    quantity: cartItem.quantity
+                });
+            });
+
+            // Создаем заказ для каждой группы
+            const promises = Object.entries(itemsByGroup).map(([groupId, items]) => {
+                return fetch('/app/order/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        employee_id: currentEmployee.id,
+                        group_id: groupId || null,
+                        order_date: currentDate,
+                        items: items
+                    })
+                });
+            });
+
+            Promise.all(promises)
+                .then(responses => Promise.all(responses.map(r => r.json())))
+                .then(results => {
+                    const errors = results.filter(r => !r.success);
+                    if (errors.length > 0) {
+                        showModal('Ошибка заказа', errors[0].error || 'Ошибка создания заказа', false);
+                    } else {
+                        // Очищаем корзину для этого дня
+                        Object.keys(cart).forEach(key => {
+                            if (cart[key].date === currentDate) {
+                                delete cart[key];
+                            }
+                        });
+
+                        updateCartDisplay();
+                        loadMenu(currentDate);
+                        loadEmployeeOrders();
+                        updateBalance();
+
+                        showModal('Заказ оформлен!', 'Ваш заказ успешно оформлен и ожидает подтверждения.', true);
+                    }
+                })
+                .catch(err => {
+                    showModal('Ошибка', 'Ошибка соединения с сервером', false);
+                });
+        }
+
+        function loadEmployeeOrders() {
+            if (!currentEmployee) return;
+
+            fetch(`/app/employee/${currentEmployee.id}/orders/`)
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        employeeOrders = data.orders;
+                        updateOrdersDisplay();
+                        updateWeekSelector();
+                    }
+                })
+                .catch(err => console.error('Ошибка загрузки заказов:', err));
+        }
+
+        function updateOrdersDisplay() {
+            const ordersContent = document.getElementById('orders-content');
+
+            if (Object.keys(employeeOrders).length === 0) {
+                ordersContent.innerHTML = '<div class="empty-state"><div class="empty-state-icon">📋</div><div>У вас пока нет заказов</div></div>';
+                return;
+            }
+
+            let html = '<div class="orders-list">';
+            Object.entries(employeeOrders).sort().forEach(([date, order]) => {
+                const dateObj = new Date(date);
+                const dateStr = dateObj.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', weekday: 'long' });
+
+                html += `
+                    <div class="order-card">
+                        <div class="order-card-header">
+                            <div class="order-date">${dateStr}</div>
+                            <div class="order-status ${order.status}">${order.status_display}</div>
+                        </div>
+                        <div class="order-items">
+                            ${order.items.map(item => `
+                                <div class="order-item">
+                                    <span>${item.name} × ${item.quantity}</span>
+                                    <span>${item.subtotal.toFixed(2)}₽</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="order-total">
+                            <span>Итого:</span>
+                            <span>${order.total_amount.toFixed(2)}₽</span>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            ordersContent.innerHTML = html;
+        }
+
+        function updateWeekSelector() {
+            document.querySelectorAll('.day-btn').forEach(btn => {
+                const date = btn.dataset.date;
+                if (employeeOrders[date]) {
+                    btn.classList.add('has-order');
+                } else {
+                    btn.classList.remove('has-order');
+                }
+            });
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('menu-tab').style.display = tab === 'menu' ? 'block' : 'none';
+            document.getElementById('orders-tab').style.display = tab === 'orders' ? 'block' : 'none';
+
+            if (tab === 'orders') {
+                loadEmployeeOrders();
+            }
+        }
+
+        function showError(message) {
+            showModal('Ошибка', message, false);
+        }
+    </script>
+</body>
+
+</html>

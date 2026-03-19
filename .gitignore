@@ -1,0 +1,42 @@
+*.pyc
+__pycache__/
+*.db
+*.sqlite3
+db.sqlite3
+.env
+.env.*
+!.env.example
+venv/
+env/
+.venv
+*.log
+staticfiles/
+media/
+.DS_Store
+
+# Deploy scripts with credentials
+deploy_sshpass.sh
+setup_nginx_ssl.sh
+execute_on_server.sh
+manual_deploy.sh
+
+# Sensitive data files
+employees_credentials.csv
+*.~lock.*
+СОТРУДНИКИ.csv
+users_employees_credentials.csv
+detailed_report_*.md
+victor_kiselev_lol_activity_report.md
+deploy_log.txt
+OK_BOT_COMMANDS.txt
+
+# Large binary / data files not needed in repo
+images/
+image_links.csv
+nam_nyam_full_menu.csv
+
+# Temp files
+*.tar.gz
+celerybeat-schedule
+celerybeat.pid
+

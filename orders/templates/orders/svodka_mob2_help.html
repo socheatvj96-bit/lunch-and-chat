@@ -1,0 +1,71 @@
+{% extends "orders/base.html" %}
+{% load static %}
+
+{% block title %}Справка по расчёту svodka-mob2{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .help-page { padding: 1.2rem 0; }
+    .help-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        padding: 1rem 1.1rem;
+        margin-bottom: 0.9rem;
+    }
+    .help-card h2 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+    .help-card p, .help-card li { font-size: 0.95rem; line-height: 1.45; }
+    .help-card ul { margin: 0.4rem 0 0 1.1rem; }
+    .formula { font-family: monospace; background: rgba(15,23,42,0.45); padding: 0.4rem 0.55rem; border-radius: 0.45rem; display: inline-block; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container help-page">
+    <h1>Как считается таблица на svodka-mob2</h1>
+
+    <div class="help-card">
+        <h2>Откуда берутся данные</h2>
+        <ul>
+            <li><strong>Факт</strong> по дню — сумма всех позиций заказа за день: <span class="formula">sum(price * quantity)</span>.</li>
+            <li><strong>Оплата сотрудником</strong> — сумма поля заказа <code>amount_paid_by_employee</code> за этот день.</li>
+            <li><strong>Оплата компанией</strong> — разница: <span class="formula">факт - оплата сотрудником</span>.</li>
+            <li>Отменённые заказы не участвуют в расчётах.</li>
+        </ul>
+    </div>
+
+    <div class="help-card">
+        <h2>Колонки по сотруднику</h2>
+        <ul>
+            <li><strong>Личный баланс</strong> — текущее поле <code>personal_balance</code> сотрудника.</li>
+            <li><strong>факт. оплата компании</strong> — сумма всех дневных колонок «компания» за выбранную неделю.</li>
+            <li><strong>факт. оплата сотрудником</strong> — сумма всех дневных колонок «сотрудник» за неделю.</li>
+            <li><strong>Итого факт</strong> — сумма всех дневных «факт» за неделю.</li>
+        </ul>
+    </div>
+
+    <div class="help-card">
+        <h2>Колонки по дням</h2>
+        <ul>
+            <li><strong>факт</strong> — сколько стоили все блюда сотрудника в этот день.</li>
+            <li><strong>компания</strong> — сколько из факта покрыла компания: <span class="formula">max(факт - сотрудник, 0)</span>.</li>
+            <li><strong>сотрудник</strong> — сколько сотрудник оплатил сам (из карточки заказа / поля «заплатил сам»).</li>
+        </ul>
+    </div>
+
+    <div class="help-card">
+        <h2>Блок недели сверху</h2>
+        <ul>
+            <li><strong>Сколько дала компания на эту неделю</strong> — вручную вводимая сумма для недели (понедельник-воскресенье).</li>
+            <li><strong>Остаток с прошлой недели</strong> — переносится из предыдущей недели.</li>
+            <li><strong>Расход компании за неделю</strong> — сумма колонки «компания» по всем сотрудникам/дням.</li>
+            <li><strong>Остаток после недели</strong> = <span class="formula">остаток с прошлой + дала компания - расход компании</span>.</li>
+        </ul>
+    </div>
+
+    <div class="help-card">
+        <h2>Если выбран не ровно диапазон пн-вс</h2>
+        <p>Период всё равно разбивается на календарные недели, и каждая неделя рассчитывается отдельно.</p>
+    </div>
+</div>
+{% endblock %}

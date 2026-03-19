@@ -1,0 +1,16 @@
+[Unit]
+Description=Ensure lunch_order stack is up
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/lunch_order
+ExecStart=/bin/bash -lc 'DOCKER_BUILDKIT=0 COMPOSE_PROJECT_NAME=lunch_order docker compose up -d'
+ExecStop=/bin/bash -lc 'DOCKER_BUILDKIT=0 COMPOSE_PROJECT_NAME=lunch_order docker compose down'
+TimeoutStartSec=180
+
+[Install]
+WantedBy=multi-user.target

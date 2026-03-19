@@ -1,0 +1,1854 @@
+[
+  {
+    "category": "Комплексные обеды",
+    "items": [
+      {
+        "name": "Комплекс \"Без свинины\"",
+        "price": "310 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Шашлык куриный с картофелем по-деревенски 270 г",
+            "info": "Вес: 270 г. , 229 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0f9/200_200_1/w7gs2ff0mh5ymxl7t66gw2c5hun3t04b.jpg"
+          },
+          {
+            "name": "Салат \"Сельдь под шубой\" 150 г",
+            "info": "Вес: 150 г. , 290 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/f53/200_200_1/sumdsj9sd4htcds6buccj94z4bgui7mf.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Комплекс \"Вкусный дуэт\"",
+        "price": "300 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Щи из свежей капусты с курицей 300 г",
+            "info": "Вес: 300 г. , 76 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/a9e/200_200_1/k2blgh0kk5wl520rh1flb2z8u2z2ffur.jpg"
+          },
+          {
+            "name": "Курица тушеная с овощами 300 г",
+            "info": "Вес: 300 г. , 124 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/fa4/200_200_1/bin1ehx89bt9xk3c1zwes7f72wpcmsmu.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Комплекс \"Гурман\"",
+        "price": "361 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Жаркое по-домашнему 1/300гр.",
+            "info": "Вес: 300 г. , 150 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/e9d/200_200_1/eieu3be4knnyaeqj1r2hj0yojzxryr9v.jpg"
+          },
+          {
+            "name": "Салат \"Цезарь с пекинской капустой и майонезом\" 150 г",
+            "info": "Вес: 150 г. , 202 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6b8/200_200_1/gu3391sm8shlo76o2a408bp9wqoj14ev.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Комплекс \"Завтрак\"",
+        "price": "296 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Какао с молоком 250 г",
+            "info": "Вес: 250 г. , 64 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/967/200_200_1/2aik9tr5dz0jleauzmih9q7fnegygky1.jpg"
+          },
+          {
+            "name": "Багет с ветчиной 240 г",
+            "info": "Вес: 240 г. , 271 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6b9/200_200_1/ltmjbqm695ohx3vyxta80lsig7r0hkst.jpg"
+          },
+          {
+            "name": "Пшенная каша на молоке 300 г",
+            "info": "Вес: 300 г. , 117 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d07/200_200_1/by6nnnksshwtdb97odbvt52j4uy4r1f0.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Комплекс \"Стандарт Плюс\"",
+        "price": "496 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Суп с курицей, крахмальной лапшой и грибами 300 г",
+            "info": "Вес: 300 г. , 89 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/8db/200_200_1/tc5u6r97w70dj2ms71o085x473f5wv0m.jpg"
+          },
+          {
+            "name": "Слойка с вишней 100 г",
+            "info": "Вес: 100 г. , 360 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/46c/200_200_1/velie837ma7107gj940opoa5v8j2kjqx.jpg"
+          },
+          {
+            "name": "Сосиски гриль с макаронами и кетчупом 250+40 г",
+            "info": "Вес: 290 г. , 181 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/493/200_200_1/x6gfm4zcu779a8e8lhejk44nysheabyk.jpg"
+          },
+          {
+            "name": "Салат из курицы с ананасами 150 г",
+            "info": "Вес: 150 г. , 238 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/9ac/200_200_1/q7rnta518ues2g7y6w0d7nm4202e2gq3.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Комплекс \"Стандарт\"",
+        "price": "461 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Щи из свежей капусты с курицей 300 г",
+            "info": "Вес: 300 г. , 76 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/a9e/200_200_1/k2blgh0kk5wl520rh1flb2z8u2z2ffur.jpg"
+          },
+          {
+            "name": "Куриное филе жаренное в яйце с рисом и овощами 270 г",
+            "info": "Вес: 270 г. , 203 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/681/200_200_1/o1v6gkqy12dyfmyl0wlr040mshx74zgb.jpg"
+          },
+          {
+            "name": "Салат \"Любимый вкус\" 150 г",
+            "info": "Вес: 150 г. , 172 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0d8/200_200_1/24mlnzd7c14wl79lq19zecwka2kc0ej2.jpg"
+          },
+          {
+            "name": "Сок \"Диас\" апельсин 0,2 л.",
+            "info": null,
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/08c/200_200_1/z9vnx8dmvb8yy2dfrvnayekn2vssx5lh.gif"
+          }
+        ]
+      },
+      {
+        "name": "Комплекс \"Эконом\"",
+        "price": "276 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Салат \"Витаминный\" 150 г",
+            "info": "Вес: 150 г. , 93 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0e1/200_200_1/hq51o2x9x0bw22sc44mi1rmln22e11l6.jpg"
+          },
+          {
+            "name": "Паста с курицей и томатным соусом и моцареллой 290 г",
+            "info": "Вес: 290 г. , 168 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/838/200_200_1/qpx88vzgr6uc3hm9icx9ebzeqttfz4mr.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Комплекс БВ",
+        "price": "432 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Суп с курицей, крахмальной лапшой и грибами 300 г",
+            "info": "Вес: 300 г. , 89 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/8db/200_200_1/tc5u6r97w70dj2ms71o085x473f5wv0m.jpg"
+          },
+          {
+            "name": "Сосиски гриль с макаронами и кетчупом 250+40 г",
+            "info": "Вес: 290 г. , 181 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/493/200_200_1/x6gfm4zcu779a8e8lhejk44nysheabyk.jpg"
+          },
+          {
+            "name": "Салат из курицы с ананасами 150 г",
+            "info": "Вес: 150 г. , 238 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/9ac/200_200_1/q7rnta518ues2g7y6w0d7nm4202e2gq3.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Комплекс БК",
+        "price": "395 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Щи из свежей капусты с курицей 300 г",
+            "info": "Вес: 300 г. , 76 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/a9e/200_200_1/k2blgh0kk5wl520rh1flb2z8u2z2ffur.jpg"
+          },
+          {
+            "name": "Куриное филе жаренное в яйце с рисом и овощами 270 г",
+            "info": "Вес: 270 г. , 203 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/681/200_200_1/o1v6gkqy12dyfmyl0wlr040mshx74zgb.jpg"
+          },
+          {
+            "name": "Салат \"Любимый вкус\" 150 г",
+            "info": "Вес: 150 г. , 172 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0d8/200_200_1/24mlnzd7c14wl79lq19zecwka2kc0ej2.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Белое желание\"",
+        "price": "326 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Сырники с изюмом 200 г",
+            "info": "Вес: 200 г.",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/14c/200_200_1/uxtcrk1d3aadsn8sbmp7722mo0yey8s9.jpg"
+          },
+          {
+            "name": "Рисовая каша на молоке 300 г",
+            "info": "Вес: 300 г. , 110 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/1cd/200_200_1/j45k9y3pk75m8rmkny7gps8qd7sgirac.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Быстрый перекус\"",
+        "price": "266 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Блинчики с творогом (210) (упак.3шт.)",
+            "info": "Вес: 210 г. , 247 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/44e/200_200_1/hgvvqm4gp90j6vpp1136w6iqsks39pzg.jpg"
+          },
+          {
+            "name": "Булочка с маком 100 г",
+            "info": "Вес: 100 г. , 290 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6c1/200_200_1/wptt2pqhfg01reowd8fz2u7cd96t8tp3.jpg"
+          },
+          {
+            "name": "Сок \"Диас\" абрикос 0,2 л.",
+            "info": null,
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/1da/200_200_1/6ht7eibw0cnb5yy7nnsixk4nuhetdbz1.gif"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Вкусно, сытно\"",
+        "price": "455 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Крылышки куриные 200 г",
+            "info": "Вес: 200 г. , 245 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/30f/200_200_1/7q3rw6ly05imk7z4pda0zxqu5d0c7ml3.jpg"
+          },
+          {
+            "name": "Черноголовка \"Байкал\" 0,5 л",
+            "info": null,
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/b45/200_200_1/mv3930qw4zh20lewa2ki1mbfe75v64eu.jpg"
+          },
+          {
+            "name": "Шаурма с курицей 230 г",
+            "info": "Вес: 230 г. , 175 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/8de/200_200_1/jbet5q3zrz7bt77nvrluw1lrrhtv139g.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Гурман\"",
+        "price": "487 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Шашлык куриный с картофельным пюре 270 г",
+            "info": "Вес: 270 г. , 164 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/db5/200_200_1/od7b6fcz8q28of1hrayxc1q7nezf5tz7.jpg"
+          },
+          {
+            "name": "Салат \"Цезарь\" 180 г (ПРЕМИУМ)",
+            "info": "Вес: 180 г. , 220 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/7f5/200_200_1/0q43hv48oodhj7msdiom3ysxff5f1d2n.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Домашний вкус\"",
+        "price": "340 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Котлета минская со спагетти 270 г",
+            "info": "Вес: 270 г. , 221 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/cbf/200_200_1/iw1uapi751nrhl6ml3famlw1bfxuxe5w.jpg"
+          },
+          {
+            "name": "Салат \"Оливье с колбасой\" 150 г",
+            "info": "Вес: 150 г. , 218 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/732/200_200_1/03ch3py9s7v1oz5hgli9g0kk04ei1f8e.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Красная рыбка\"",
+        "price": "406 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Горбуша жареная в сухарях с рисом по-гавайски 250 г",
+            "info": "Вес: 250 г. , 197 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ebd/200_200_1/7wq2ryttabknulkeln6xri693fukwjlm.jpg"
+          },
+          {
+            "name": "Ролл с лососем 170 г",
+            "info": "Вес: 170 г. , 245 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/093/200_200_1/0q98qfba23btmfif9ro0onk0aycwbqur.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Лакомка\"",
+        "price": "455 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Блинчики с яблоком (210) (упак.3шт.)",
+            "info": "Вес: 210 г. , 251 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/255/200_200_1/y6iu21lj8i19nf5p34s2l7yq8o1as3ye.jpg"
+          },
+          {
+            "name": "Сочник с творогом 100 г",
+            "info": "Вес: 100 г. , 392 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/2ed/200_200_1/e2d846hq3u8nte4pw1o8wo2acet1wpm5.jpg"
+          },
+          {
+            "name": "Салат \"Нептун\" 150 г",
+            "info": "Вес: 150 г. , 239 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/46c/200_200_1/ne34k6dnoo02ko1xqpioc0ipsp7xye0u.jpg"
+          },
+          {
+            "name": "Яблочно-вишневый компот 500 г",
+            "info": "Вес: 500 г. , 35 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/67e/200_200_1/t63qa1ma8dq8pha48k1oh5bx5lnsioth.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Минутка\"",
+        "price": "262 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Винегрет овощной 150 г",
+            "info": "Вес: 150 г. , 99 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/2b5/200_200_1/pu3u39tslqymvm0wfclxmk494g3jnjsf.jpg"
+          },
+          {
+            "name": "Блин-омлет с куриным филе 140 г",
+            "info": "Вес: 140 г. , 261 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ddb/200_200_1/cosbsg39w40ass7djg0dt0awrmh3rrb2.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Полезный перекус\"",
+        "price": "223 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Винегрет без картофеля 150 г",
+            "info": "Вес: 150 г. , 106 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/66e/200_200_1/1roepwm9gayk4o6leijdqlzgj7wpeizv.jpg"
+          },
+          {
+            "name": "Рис с овощами 170г",
+            "info": "Вес: 170 г. , 175 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6d1/200_200_1/qp5ceb6ujfn9d8kwlze5zdmitx410bzo.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Бизнес-Ланч \"Сытный\"",
+        "price": "713 руб.",
+        "type": "complex",
+        "components": [
+          {
+            "name": "Суп с курицей, крахмальной лапшой и грибами 300 г",
+            "info": "Вес: 300 г. , 89 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/8db/200_200_1/tc5u6r97w70dj2ms71o085x473f5wv0m.jpg"
+          },
+          {
+            "name": "Слойка с вишней 100 г",
+            "info": "Вес: 100 г. , 360 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/46c/200_200_1/velie837ma7107gj940opoa5v8j2kjqx.jpg"
+          },
+          {
+            "name": "Манты по-восточному 290 г",
+            "info": "Вес: 290 г. , 230 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/c01/200_200_1/h26hh3bedzvhx33xovyxx2gwrlxmdkr7.jpg"
+          },
+          {
+            "name": "Салат \"Цезарь с пекинской капустой и майонезом\" 150 г",
+            "info": "Вес: 150 г. , 202 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6b8/200_200_1/gu3391sm8shlo76o2a408bp9wqoj14ev.jpg"
+          },
+          {
+            "name": "Яблочно-вишневый компот 500 г",
+            "info": "Вес: 500 г. , 35 ккал",
+            "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/67e/200_200_1/t63qa1ma8dq8pha48k1oh5bx5lnsioth.jpg"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "category": "Завтраки",
+    "items": [
+      {
+        "name": "Блин-омлет с сыром и ветчиной 140 г",
+        "price": "138 руб.",
+        "weight_kcal": "Вес: 140 г., 261 ккал",
+        "composition": null,
+        "macros": "17/20/2",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d6b/200_150_1/d090w7ylfdzz0tbau0ejxgm5w3lw18lu.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Запеканка творожная",
+        "price": "151 руб.",
+        "weight_kcal": "Вес: 150 г., 197 ккал",
+        "composition": "Творог, сахар, яйцо, крупа манная, ванилин, масло подсолнечное",
+        "macros": "14/7/16",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/487/200_150_1/fq3lt2luous4wg9lnutb74wa1xpfgoc2.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Каша гурьевская 240 г",
+        "price": "149 руб.",
+        "weight_kcal": "Вес: 240 г., 137 ккал",
+        "composition": "молоко, крупа манная, сливки, изюм, вишня, яблоко, сахар, корица",
+        "macros": "2/4/20",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ab4/200_150_1/80shotnipqb6r92vbat6s60rsnz5qm57.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Овсяная каша на молоке 300 г",
+        "price": "142 руб.",
+        "weight_kcal": "Вес: 300 г., 110 ккал",
+        "composition": "Овсяные хлопья, молоко, сахар, масло сливочное, соль",
+        "macros": "2/5/13",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/15b/200_150_1/13g3hzsmpm88f9sk4w2ndgeq55n090dh.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пшенная каша на молоке 300 г",
+        "price": "142 руб.",
+        "weight_kcal": "Вес: 300 г., 117 ккал",
+        "composition": "Пшено, молоко, сахар, масло сливочное, соль",
+        "macros": "3/4/15",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d07/200_150_1/by6nnnksshwtdb97odbvt52j4uy4r1f0.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Рисовая каша на молоке 300 г",
+        "price": "142 руб.",
+        "weight_kcal": "Вес: 300 г., 110 ккал",
+        "composition": "Рис, молоко, сахар, масло сливочное, соль",
+        "macros": "2/4/14",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/1cd/200_150_1/j45k9y3pk75m8rmkny7gps8qd7sgirac.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Сырники запеченные с цедрой апельсина 200 г",
+        "price": "173 руб.",
+        "weight_kcal": "Вес: 200 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/916/200_150_1/xo4dxaw9vp93c8tmo7ctm6jtctdsx8c0.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Сырники с изюмом 200 г",
+        "price": "184 руб.",
+        "weight_kcal": "Вес: 200 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/14c/200_150_1/uxtcrk1d3aadsn8sbmp7722mo0yey8s9.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Первые блюда",
+    "items": [
+      {
+        "name": "Суп с курицей, крахмальной лапшой и грибами 300 г",
+        "price": "154 руб.",
+        "weight_kcal": "Вес: 300 г., 89 ккал",
+        "composition": "Курица, картофель, лук, морковь, перец болгарский, масло растительное, рисовая лапша, грибы, специи",
+        "macros": "4/5/5",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/8db/200_150_1/tc5u6r97w70dj2ms71o085x473f5wv0m.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Щи из свежей капусты с курицей 300 г",
+        "price": "149 руб.",
+        "weight_kcal": "Вес: 300 г., 76 ккал",
+        "composition": "Капуста белокочанная, курица, картофель, морковь, лук, соль, перец черный",
+        "macros": "5/4/4",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/a9e/200_150_1/k2blgh0kk5wl520rh1flb2z8u2z2ffur.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Вторые блюда",
+    "items": [
+      {
+        "name": "Баварские колбаски с макаронами и соусом 300 г",
+        "price": "205 руб.",
+        "weight_kcal": null,
+        "composition": "колбаски баварские9 говядина, свинина), макароны, кетчуп, специи",
+        "macros": "7/15/25",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/8c0/200_150_1/p1jslhj7mjr8pxrccv0yvkom10pvpeke.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Биточки куриные с гречкой 270 г",
+        "price": "178 руб.",
+        "weight_kcal": "Вес: 270 г., 209 ккал",
+        "composition": "Филе куриное, гречка, сухари панировочные, лук репчатый, масло сливочное, масло подсолнечное, соль",
+        "macros": "10/8/22",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/7b7/200_150_1/tb7sm0wq0pvj0gr34vam5hxdqig499m9.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Вареники постные с картофелем и грибами 250 г",
+        "price": "178 руб.",
+        "weight_kcal": "Вес: 250 г., 236 ккал",
+        "composition": "мука пшеничная в/с, масло подсолнечное, картофель, шампиньоны, лук, соль",
+        "macros": "7/10/30",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/7ea/200_150_1/8ojrnqwnoamjpg17zngnsc8my10x0x1u.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Вареники с творогом 200 г",
+        "price": "137 руб.",
+        "weight_kcal": "Вес: 200 г., 263 ккал",
+        "composition": "Мука пшеничная, творог, молоко, сливки, сахар, масло сливочное, соль, масло подсолнечное.",
+        "macros": "12/11/27",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/424/200_150_1/m70ybar9d3two2vn63xsuve063tj15bg.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Горбуша жареная в сухарях с рисом по-гавайски 250 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 250 г., 197 ккал",
+        "composition": "Филе горбуши, яйцо, сухари панировочные, рис, кукуруза консервированная, горошек, морковь, перец болгарский, масло подсолнечное, специи",
+        "macros": "10/8/20",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ebd/200_150_1/7wq2ryttabknulkeln6xri693fukwjlm.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Грудка куриная под сыром и шампиньонами с картофельным пюре 270 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 270 г., 210 ккал",
+        "composition": "Филе куриной грудки, картофель, молоко, сыр, грибы, майонез, специи",
+        "macros": "21/14/10",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/62e/200_150_1/csb35ad9tjepryj18x1e70rblw664ech.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Жаркое по-домашнему 1/300гр.",
+        "price": "224 руб.",
+        "weight_kcal": "Вес: 300 г., 150 ккал",
+        "composition": "Картофель, говядина, морковь, перец болгарский, помидоры, лук, соль, перец черный",
+        "macros": "6/8/10",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/e9d/200_150_1/eieu3be4knnyaeqj1r2hj0yojzxryr9v.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Колбаски с картофельным пюре 300 г",
+        "price": "219 руб.",
+        "weight_kcal": null,
+        "composition": "колбаски куриные, картофельное пюре, молко, сливки, масло сливочное, специи",
+        "macros": "7/12/9",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/7ed/200_150_1/majopzknpmdt3h7mwwg59bmzb6fza3c0.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Котлета \"домашняя\" с картофельным пюре 250 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 250 г., 158 ккал",
+        "composition": "говядина, свинина, лук, картофель, молоко, сливки",
+        "macros": "9/8/11",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/e85/200_150_1/jd7rgtnerwhjct8f2ntzm473ckhehw98.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Котлета \"домашняя\" с макаронами 250 г",
+        "price": "205 руб.",
+        "weight_kcal": "Вес: 250 г., 211 ккал",
+        "composition": "говядина, свинина, лук, макароны, специи",
+        "macros": "12/6/24",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ae0/200_150_1/mt3z1k0plejts88ywxvopv1dn7mfwp2f.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Котлета Московская с макаронами 250 г",
+        "price": "191 руб.",
+        "weight_kcal": "Вес: 250 г., 209 ккал",
+        "composition": "Свинина, куриное филе, лук, картофель, капуста, масло подсолнечное, яйцо, петрушка, соль, чеснок, перец, макароны",
+        "macros": "9/7/26",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d34/200_150_1/ir9y5qveqn2ejxk33pddjxhcwhf5bt9u.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Котлета из индейки с картофельным пюре 270 г",
+        "price": "205 руб.",
+        "weight_kcal": "Вес: 270 г., 185 ккал",
+        "composition": "Филе индейки, филе куриной грудки, картофель, лук, сухари панировочные, яйцо, масло подсолнечное, соль, чеснок, перец черный",
+        "macros": "7/11/12",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/43c/200_150_1/hzw867okwq68xv19qhsi6asddjs4dbbx.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Котлета минская со спагетти 270 г",
+        "price": "205 руб.",
+        "weight_kcal": "Вес: 270 г., 221 ккал",
+        "composition": "куриная грудка,масло подсолнечное, лук, чеснок, специи , спагетти",
+        "macros": "19/13/7",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/cbf/200_150_1/iw1uapi751nrhl6ml3famlw1bfxuxe5w.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Котлета по-Киевски с картофельным пюре 270 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 270 г., 148 ккал",
+        "composition": "Филе куриной грудки, картофель, молоко, сухари панировочные, яйцо, масло сливочное, чеснок, соль, укроп",
+        "macros": "6/7/14",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/2b2/200_150_1/3ujcn3nfvcgb67ndobc2rklk240p7ieg.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Котлета \"Пожарская\" с картофельным пюре 270 г",
+        "price": "205 руб.",
+        "weight_kcal": "Вес: 270 г., 180 ккал",
+        "composition": "Филе куриное, картофель, молоко, лук, специи",
+        "macros": "4/11/14",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/381/200_150_1/wrjy59peqjwkn7gdlmagrxlkv0pecj6f.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Крылышки куриные 200 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 200 г., 245 ккал",
+        "composition": "Крыло куриное, мука пшеничная в/с, масло подсолнечное, соль, сахар, специи.",
+        "macros": "15/14/16",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/30f/200_150_1/7q3rw6ly05imk7z4pda0zxqu5d0c7ml3.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Куриное филе в сырном кляре с картофельным пюре 270 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 270 г., 196 ккал",
+        "composition": "Филе куриной грудки, сыр, картофель, молоко, яйцо, масло подсолнечное, соль",
+        "macros": "9/12/12",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/f2c/200_150_1/dajcytpkiljmj5jzssdbqstauxb90xpf.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Куриное филе жаренное в яйце с рисом и овощами 270 г",
+        "price": "178 руб.",
+        "weight_kcal": "Вес: 270 г., 203 ккал",
+        "composition": "Филе куриной грудки, сыр, яйцо,Рис, лук, морковь, масло подсолнечное, соль",
+        "macros": "9/9/20",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/681/200_150_1/o1v6gkqy12dyfmyl0wlr040mshx74zgb.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Курица \"Су-вид\" с гречкой, грибами и луком 270 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 270 г., 183 ккал",
+        "composition": "Филе куриной грудки, гречка, шампиньоны, лук , масло подсолнечное, чеснок, соль, перец чёрный",
+        "macros": "13/7/15",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/767/200_150_1/mvp6xn103rosoa0jqszc4wq81zf7odbl.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Курица тушеная с овощами 300 г",
+        "price": "187 руб.",
+        "weight_kcal": "Вес: 300 г., 124 ккал",
+        "composition": "курица, морковь, томаты, перец болгарский, картофель, капуста, лук, чеснок, укроп, петрушка, соль, масло подсолнечное",
+        "macros": "9/7/4",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/fa4/200_150_1/bin1ehx89bt9xk3c1zwes7f72wpcmsmu.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Лагман с курицей 275 г",
+        "price": "205 руб.",
+        "weight_kcal": "Вес: 275 г., 130 ккал",
+        "composition": "Лапша лагманная, куриная грудка, лук, помидоры, морковь, фасоль, перец болгарский, соль, петрушка, кориандр",
+        "macros": "7/5/13",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/56f/200_150_1/377st0w5bipfqfe6nmiz66ebjapo9mqt.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Люля-кебаб с кетчупом и рисом 290 г",
+        "price": "178 руб.",
+        "weight_kcal": "Вес: 290 г., 199 ккал",
+        "composition": "Говядина, филе куриной грудки, рис, морковь, лук репчатый, картофель, масло подсолнечное, яйцо куриное, соль",
+        "macros": "5/9/22",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/452/200_150_1/uu33qlw5v80k1shh4ux1pzb1dmzowc51.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Манты по-восточному 290 г",
+        "price": "233 руб.",
+        "weight_kcal": "Вес: 290 г., 230 ккал",
+        "composition": "Говядина, курица, лук, соль, перец черный, яйцо, масло подсолнечное, сметана",
+        "macros": "7/12/23",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/c01/200_150_1/h26hh3bedzvhx33xovyxx2gwrlxmdkr7.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Манты с мясом и тыквой 200 г",
+        "price": "156 руб.",
+        "weight_kcal": "Вес: 200 г., 223 ккал",
+        "composition": "Говядина, курица, тыква, лук, соль, перец черный, яйцо, масло подсолнечное, сметана",
+        "macros": "5/12/23",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/652/200_150_1/1uf6xv9j0tsaow2f2thnrj23hvn9ml1g.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Мясо по-французски с картофельным пюре 270 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 270 г., 236 ккал",
+        "composition": "Свинина, шампиньоны, лук, сыр, картофель, молоко, майонез, специи",
+        "macros": "16/18/10",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/cf4/200_150_1/lpokv03p8h78l22t93utiu0n23r3nweo.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Окорочка куриные запечённые 250 г",
+        "price": "245 руб.",
+        "weight_kcal": "Вес: 250 г., 308 ккал",
+        "composition": "Окорочка куриные, масло подсолнечное, соль, чеснок, паприка, кориандр.",
+        "macros": "24/22/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d7e/200_150_1/qa40se1d7i04cmhysnje1rdjgtg1nbn6.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Оладьи из филе курицы с пенне 250 г",
+        "price": "191 руб.",
+        "weight_kcal": "Вес: 250 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ce3/200_150_1/zx71m3z7t00l0gl3l685m0hbxp2v9lm2.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Паста \"Болоньезе\" 275 г",
+        "price": "205 руб.",
+        "weight_kcal": "Вес: 275 г., 148 ккал",
+        "composition": "Спагетти, лук репчатый, помидоры, говядина, свинина, перец болгарский, масло подсолнечное, томатная паста, чеснок, соль",
+        "macros": "6/5/17",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/792/200_150_1/7d56qk3vssm8zkmt4e808k50xtw1l2n1.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Паста \"Карбонара\" 265 г",
+        "price": "226 руб.",
+        "weight_kcal": "Вес: 265 г., 239 ккал",
+        "composition": "Спагетти, грудинка свиная, окорок свиной, лук, сыр, сливки, молоко, масло подсолнечное, соль",
+        "macros": "7/14/19",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/e3d/200_150_1/nnlpwfvmi3381f021xzfn6yywvy1pv1b.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Паста с курицей и томатным соусом и моцареллой 290 г",
+        "price": "190 руб.",
+        "weight_kcal": "Вес: 290 г., 168 ккал",
+        "composition": "грудка куриная, спагети, сыр моцарелла, томаты, лук, перец болгарский, чеснок, масло растительное, специи",
+        "macros": "11/6/16",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/838/200_150_1/qpx88vzgr6uc3hm9icx9ebzeqttfz4mr.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Паста с лососем 210 г",
+        "price": "245 руб.",
+        "weight_kcal": "Вес: 210 г., 222 ккал",
+        "composition": "филе горбуши, спагетти, лук, помидоры, морковь, соус Песто",
+        "macros": "7/12/18",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/341/200_150_1/z1uqpzc20v0dfvdimzkel2a0klyvng0v.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пельмени \"Уральские\" из курицы и говядины 250 г",
+        "price": "184 руб.",
+        "weight_kcal": "Вес: 250 г., 170 ккал",
+        "composition": "мука пшеничная в/с, яйцо куриное, масло подсолнечное, соль, куриная грудка, лук репчатый, говядина, перец чёрный",
+        "macros": "9/7/17",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/e94/200_150_1/txeakeyswai35n68pbxrjkkjiv47xqiq.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пенне карбонара с беконом в сливочном соусе 300 г",
+        "price": "233 руб.",
+        "weight_kcal": null,
+        "composition": "пенне, окорок свиной, свинина грудинка, лук, сливки, молоко, сыр",
+        "macros": "7/14/16",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/875/200_150_1/7x4hb8m52y9qbzr7vfuk4xin12yd25fu.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пибимпаб с курицей 260 г",
+        "price": "205 руб.",
+        "weight_kcal": "Вес: 260 г., 171 ккал",
+        "composition": "рис, куриное филе, лук, морковь, огурцы, блин-омлет, специи",
+        "macros": "7/8/15",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/dba/200_150_1/szmxlt6kawy1wammx356h5a42ldrbwof.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пироги по - корейски с мясом 280 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 280 г., 292 ккал",
+        "composition": "Мука пшеничная в/с, свинина, капуста, лук, масло подсолнечное, чеснок, соль, перец черный",
+        "macros": "18/7/37",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/1c2/200_150_1/ede96gju0dpgx3wgvw0si7u7ucgkkob5.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Плов с курицей 250 г",
+        "price": "191 руб.",
+        "weight_kcal": "Вес: 250 г., 238 ккал",
+        "composition": "Рис, филе куриной грудки, морковь, лук, масло подсолнечное, соль",
+        "macros": "10/10/25",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/75b/200_150_1/6mizyul92t4337bz7klvovv3e32mk1rv.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Плов с мясом 250 г",
+        "price": "212 руб.",
+        "weight_kcal": "Вес: 250 г., 223 ккал",
+        "composition": "Рис, говядина, морковь, лук, масло подсолнечное, соль",
+        "macros": "7/11/22",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/3bb/200_150_1/toxl1vnffk2yd5l519uw17bhn3alexte.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Поке с курицей 305 г",
+        "price": "273 руб.",
+        "weight_kcal": "Вес: 305 г., 144 ккал",
+        "composition": "куриная грудка, рис, капуста краснокачанная, огурцы, томаты черри, специи",
+        "macros": "5/3/23",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0da/200_150_1/c6z22cltzce6hau6xy8e48dxb8cgzkaa.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Поке с лососем 310 г",
+        "price": "476 руб.",
+        "weight_kcal": "Вес: 310 г., 186 ккал",
+        "composition": "рис, семга слабосоленая, сыр творожный, томаты черри, редис,огурцы, бобы эдамаме, специи",
+        "macros": "6/7/24",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/3de/200_150_1/j718jgp4mcfs94052f7zbhhzxf8yddi0.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Сосиски гриль с макаронами и кетчупом 250+40 г",
+        "price": "191 руб.",
+        "weight_kcal": "Вес: 290 г., 181 ккал",
+        "composition": "Сосиски, макароны, кетчуп",
+        "macros": "5/13/9",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/493/200_150_1/x6gfm4zcu779a8e8lhejk44nysheabyk.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Тефтели мясные с картофельным пюре 310 г",
+        "price": "212 руб.",
+        "weight_kcal": "Вес: 310 г., 215 ккал",
+        "composition": "Говядина, свинина, курица, лук, рис, морковь, яйцо, перец, картофель, молоко",
+        "macros": "5/15/13",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/eb1/200_150_1/cx0qve66igkpgjk4ka7t6rrixzevhzqi.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Филе минтая под шубой из сыра и яиц с картофельным пюре 270 г",
+        "price": "212 руб.",
+        "weight_kcal": "Вес: 270 г., 158 ккал",
+        "composition": "Филе минтая, яйцо, мука пшеничная в/с, сыр, масло подсолнечное, соль, картофель, молоко",
+        "macros": "7/9/9",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6ea/200_150_1/kf23945ud52hxbg59fvf1xavmt5vhamg.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Шашлык куриный 200 г",
+        "price": "273 руб.",
+        "weight_kcal": "Вес: 200 г., 230 ккал",
+        "composition": "Филе куриной грудки, майонез , масло подсолнечное, соль, паприка",
+        "macros": "31/10/3",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/903/200_150_1/0u3zw4jsj2l82k4wj5r01lgdzv51gvdi.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Шашлык куриный с картофелем по-деревенски 270 г",
+        "price": "202 руб.",
+        "weight_kcal": "Вес: 270 г., 229 ккал",
+        "composition": "Картофель, филе куриной грудки, кетчуп, майонез, соль, паприка",
+        "macros": "13/8/23",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0f9/200_150_1/w7gs2ff0mh5ymxl7t66gw2c5hun3t04b.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Шашлык куриный с картофельным пюре 270 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 270 г., 164 ккал",
+        "composition": "Филе куриной грудки, майонез , картофель, молоко, масло подсолнечное, паприка, чеснок, соль.",
+        "macros": "13/7/11",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/db5/200_150_1/od7b6fcz8q28of1hrayxc1q7nezf5tz7.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Шницель из индейки со спагетти и кетчупом 290 г",
+        "price": "219 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/a66/200_150_1/78si447tdcmwez9n22silw2r98can0bo.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Японский рис с курицей и овощами 300 г",
+        "price": "219 руб.",
+        "weight_kcal": "Вес: 300 г., 188 ккал",
+        "composition": "Рис, филе куриной грудки, яйцо, морковь, брокколи, лук, перец болгарский, соус, чеснок, петрушка, кунжут",
+        "macros": "7/7/21",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/609/200_150_1/9cwgfn8np7kyccqz7rivgj58qt34mwsh.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Салаты и закуски",
+    "items": [
+      {
+        "name": "Винегрет без картофеля 150 г",
+        "price": "127 руб.",
+        "weight_kcal": "Вес: 150 г., 106 ккал",
+        "composition": "Свекла, капуста квашеная, горошек, огурцы маринованные, морковь, масло подсолнечное, укроп, лук, соль",
+        "macros": "2/7/7",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/66e/200_150_1/1roepwm9gayk4o6leijdqlzgj7wpeizv.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Винегрет овощной 150 г",
+        "price": "127 руб.",
+        "weight_kcal": "Вес: 150 г., 99 ккал",
+        "composition": "Картофель, свекла, огурцы, горошек, морковь, лук, масло подсолнечное, специи",
+        "macros": "2/5/9",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/2b5/200_150_1/pu3u39tslqymvm0wfclxmk494g3jnjsf.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Морковь по-корейски 150 г",
+        "price": "105 руб.",
+        "weight_kcal": "Вес: 150 г., 131 ккал",
+        "composition": "Морковь, масло подсолнечное, сахар, уксус, соль, чеснок, перец, кунжут, кориандр",
+        "macros": "1/7/14",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/e9d/200_150_1/ydgtjq5xmp003p648kp7iggt465fnb0c.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Буржуй\" 150 г",
+        "price": "149 руб.",
+        "weight_kcal": "Вес: 150 г., 254 ккал",
+        "composition": "Куриная грудка, ветчина из индейки, молоко, огурцы, яйцо, майонез",
+        "macros": "19/20/5",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/66f/200_150_1/jgx2z2o9cn88h1rwh0iu5scped93rc4n.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Витаминный\" 150 г",
+        "price": "117 руб.",
+        "weight_kcal": "Вес: 150 г., 93 ккал",
+        "composition": "Капуста, яблоки, морковь, масло подсолнечное, сахар, уксус, соль, укроп",
+        "macros": "1/5/9",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0e1/200_150_1/hq51o2x9x0bw22sc44mi1rmln22e11l6.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Греческий\" уп.190 г. (ПРЕМИУМ)",
+        "price": "268 руб.",
+        "weight_kcal": "Вес: 190 г., 158 ккал",
+        "composition": "Салат, соус, помидоры, огурцы, сыр, перец болгарский, маслины, кунжут",
+        "macros": "3/14/3",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/9ce/200_150_1/bjwnniija7j35mfgq6wknchdz3xhu1pc.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Любимый вкус\" 150 г",
+        "price": "142 руб.",
+        "weight_kcal": "Вес: 150 г., 172 ккал",
+        "composition": "Филе индейки, кукуруза, морковь, огурец, пекинская капуста, лук зеленый, укроп, сухарики, соус 1000 островов",
+        "macros": "9/10/12",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0d8/200_150_1/24mlnzd7c14wl79lq19zecwka2kc0ej2.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Мимоза (слоеный)\" 300 г",
+        "price": "268 руб.",
+        "weight_kcal": "Вес: 300 г., 247 ккал",
+        "composition": "Картофель, горбуша, сайра, морковь, сыр, яйцо, майонез",
+        "macros": "14/19/8",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/20d/200_150_1/bzec84ovqt1r97744wb018dn75a6b4bn.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Мимоза\" 150 г",
+        "price": "149 руб.",
+        "weight_kcal": "Вес: 150 г., 228 ккал",
+        "composition": "Картофель, горбуша, сайра, морковь, сыр, яйцо, майонез",
+        "macros": "12/17/11",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/e3e/200_150_1/188dvbhr55svr292nkjol3bz5obbgqxw.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Нептун\" 150 г",
+        "price": "135 руб.",
+        "weight_kcal": "Вес: 150 г., 239 ккал",
+        "composition": "Рис, крабовые палочки, кукуруза, морковь, огурцы, яйцо, майонез, специи",
+        "macros": "11/19/10",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/46c/200_150_1/ne34k6dnoo02ko1xqpioc0ipsp7xye0u.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Оливье с колбасой\" 150 г",
+        "price": "135 руб.",
+        "weight_kcal": "Вес: 150 г., 218 ккал",
+        "composition": "Картофель, морковь, колбаса, яйцо, горошек, майонез, специи",
+        "macros": "9/17/9",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/732/200_150_1/03ch3py9s7v1oz5hgli9g0kk04ei1f8e.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Оливье с курицей\" 150 г",
+        "price": "142 руб.",
+        "weight_kcal": "Вес: 150 г., 209 ккал",
+        "composition": "Картофель, морковь, куриное филе, яйцо, горошек, майонез, специи",
+        "macros": "13/15/9",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/c69/200_150_1/gh37okboq1q19fjzebbdjz1tucksc8y0.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Оливье с курицей\" 300 г",
+        "price": "230 руб.",
+        "weight_kcal": "Вес: 300 г., 209 ккал",
+        "composition": "Картофель, морковь, куриное филе, яйцо, горошек, майонез, специи",
+        "macros": "13/15/9",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/bf3/200_150_1/4duqzspazkfin62womegcohwjj7j2iyh.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Сельдь под шубой (слоеный)\" 300 г",
+        "price": "253 руб.",
+        "weight_kcal": "Вес: 300 г., 290 ккал",
+        "composition": "Сельдь филе, картофель, морковь, свекла, яйцо, майонез, специи",
+        "macros": "16/22/7",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/77f/200_150_1/e63h1dl452o8wol4le7lw7xf3c9wqurg.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Сельдь под шубой\" 150 г",
+        "price": "135 руб.",
+        "weight_kcal": "Вес: 150 г., 290 ккал",
+        "composition": "Сельдь филе, картофель, морковь, свекла, майонез, специи",
+        "macros": "16/22/7",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/f53/200_150_1/sumdsj9sd4htcds6buccj94z4bgui7mf.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Цезарь с пекинской капустой и майонезом\" 150 г",
+        "price": "157 руб.",
+        "weight_kcal": "Вес: 150 г., 202 ккал",
+        "composition": "Салат, помидоры, куриная грудка, сыр, гренки чесночные, майонез",
+        "macros": "12/16/6",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6b8/200_150_1/gu3391sm8shlo76o2a408bp9wqoj14ev.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Цезарь\" 180 г (ПРЕМИУМ)",
+        "price": "268 руб.",
+        "weight_kcal": "Вес: 180 г., 220 ккал",
+        "composition": "Салат, помидоры, куриная грудка, сыр, гренки чесночные, соус",
+        "macros": "8/17/8",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/7f5/200_150_1/0q43hv48oodhj7msdiom3ysxff5f1d2n.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат \"Южный\" 150 г",
+        "price": "142 руб.",
+        "weight_kcal": "Вес: 150 г., 166 ккал",
+        "composition": "Капуста пекинская, грудка куриная, яблоки, сельдерей, майонез, лимонная заправка",
+        "macros": "12/13/3",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/35e/200_150_1/xbu9m4olprhqsv1wuu0ycy3llud1yf56.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат из курицы с ананасами 150 г",
+        "price": "149 руб.",
+        "weight_kcal": "Вес: 150 г., 238 ккал",
+        "composition": "Филе куриное, ананасы, яйцо, майонез",
+        "macros": "15/21/3",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/9ac/200_150_1/q7rnta518ues2g7y6w0d7nm4202e2gq3.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат овощной с индейкой 180 г",
+        "price": "224 руб.",
+        "weight_kcal": "Вес: 180 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ade/200_150_1/02hc62s4dr64niof6h4f5fu5n7m8rgtp.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Салат с курицей черносливом и арахисом 200 г",
+        "price": "164 руб.",
+        "weight_kcal": null,
+        "composition": "грдка куриная, майонез, чернослив, блины яичные, молоко, ананас, огурец, арахис",
+        "macros": "10/18/16",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/37e/200_150_1/4b6a13bqm7fkfc31rqnvo4z5urrm6ar4.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Свекла с чесноком 150 г",
+        "price": "112 руб.",
+        "weight_kcal": "Вес: 150 г., 194 ккал",
+        "composition": "Свекла, чеснок, майонез, специи, зелень",
+        "macros": "8/15/11",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/b58/200_150_1/oiac0y3cb6gm0zh5d7hrhbfgg0xfxghq.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Фунчеза 150 г",
+        "price": "135 руб.",
+        "weight_kcal": "Вес: 150 г., 158 ккал",
+        "composition": "Лапша рисовая, огурцы, перец болгарский, морковь, петрушка, лук, чеснок, кунжут, соус",
+        "macros": "0/9/17",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/e54/200_150_1/le64gc3fifn5sf9c2uun2ki282bvilrs.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Гарниры",
+    "items": [
+      {
+        "name": "Капуста тушеная 170 г",
+        "price": "108 руб.",
+        "weight_kcal": "Вес: 170 г., 117 ккал",
+        "composition": "Капуста, масло подсолнечное, лук, морковь, специи",
+        "macros": "2/9/6",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/52d/200_150_1/nb2t2j5t5dmgcp1ihywf74um0kbd06s9.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Каша гречневая с шампиньонами и луком 170 г",
+        "price": "132 руб.",
+        "weight_kcal": "Вес: 170 г., 174 ккал",
+        "composition": "Гречневая каша, шампиньоны, зелень",
+        "macros": "6/8/22",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/cc4/200_150_1/qf4wn7sfbk64zjz530zx72q95o2bl8j9.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Рис с овощами 170г",
+        "price": "96 руб.",
+        "weight_kcal": "Вес: 170 г., 175 ккал",
+        "composition": "Рис, лук, морковь, масло подсолнечное, соль",
+        "macros": "2/7/24",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6d1/200_150_1/qp5ceb6ujfn9d8kwlze5zdmitx410bzo.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Спагетти отварные 170 г",
+        "price": "96 руб.",
+        "weight_kcal": "Вес: 170 г., 138 ккал",
+        "composition": "Спагетти, масло подсолнечное, специи",
+        "macros": "4/0/28",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/5ec/200_150_1/sd6e2tn85cf6noci76p11x9e3nzvhfg2.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Блины",
+    "items": [
+      {
+        "name": "Блин-омлет с куриным филе 140 г",
+        "price": "135 руб.",
+        "weight_kcal": "Вес: 140 г., 261 ккал",
+        "composition": "Яйцо куриное, филе куриной грудки, томаты, майонез 67%, масло подсолнечное, лук репчатый, укроп, соль, перец чёрный",
+        "macros": "17/20/2",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ddb/200_150_1/cosbsg39w40ass7djg0dt0awrmh3rrb2.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блинчики с мясом (210) (упак.3шт.)",
+        "price": "178 руб.",
+        "weight_kcal": "Вес: 210 г., 310 ккал",
+        "composition": "Мука в/с, молоко, яйцо, сливочное масло, сахар, дрожжи, соль, свинина, говядина, лук",
+        "macros": "11/17/27",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/921/200_150_1/wvi7sfskb0ieqh1folxawee759bpvds7.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блинчики с творогом (210) (упак.3шт.)",
+        "price": "151 руб.",
+        "weight_kcal": "Вес: 210 г., 247 ккал",
+        "composition": "Мука в/с, молоко, яйцо, масло сливочное, сахар, дрожжи, соль, творог 9%, сахар",
+        "macros": "7/9/33",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/44e/200_150_1/hgvvqm4gp90j6vpp1136w6iqsks39pzg.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блинчики с яблоком (210) (упак.3шт.)",
+        "price": "151 руб.",
+        "weight_kcal": "Вес: 210 г., 251 ккал",
+        "composition": "Мука в/с, молоко, яйцо, масло сливочное, дрожжи, соль, яблоки, сахар",
+        "macros": "4/7/42",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/255/200_150_1/y6iu21lj8i19nf5p34s2l7yq8o1as3ye.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блины без начинки 250 г",
+        "price": "96 руб.",
+        "weight_kcal": "Вес: 250 г., 257 ккал",
+        "composition": "Мука в/с, молоко, масло подсолнечное, яйцо, сахар, соль",
+        "macros": "6/9/36",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/c3c/200_150_1/5mp08h8x375gxkrpzu8t373y7bhjpt2m.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блины жюльен 210 г",
+        "price": "178 руб.",
+        "weight_kcal": "Вес: 210 г., 231 ккал",
+        "composition": "Мука пшеничная в/с, яйцо, молоко, сахар, масло подсолнечное, соль, куриная грудка, лук репчатый, шампиньоны свежие, соус \"Бешамель\", перец чёрный, сыр \"Чечел\"",
+        "macros": "13/10/22",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/971/200_150_1/ajcu2vtq7rfffyognqf7tn0vbi7fqzsi.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блины овсяные безглютеновые 180 г",
+        "price": "98 руб.",
+        "weight_kcal": "Вес: 180 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/277/200_150_1/nbtqsq400gvnl0wvk30f4q85nxgtrtt1.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блины с ветчиной и сыром (210) (упак.3шт.)",
+        "price": "157 руб.",
+        "weight_kcal": "Вес: 210 г., 251 ккал",
+        "composition": "Мука в/с, молоко, масло подсолнечное, яйца, сахар, соль, ветчина, сыр, яйцо, сухари панировочные",
+        "macros": "8/10/31",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/466/200_150_1/i1tff2jr4mue87khj9evdwzare4s9z20.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блины с курицей в сливочном соусе 160 г",
+        "price": "117 руб.",
+        "weight_kcal": "Вес: 160 г., 237 ккал",
+        "composition": "мука, сливки, молоко, масло сливочное, курица, лук, соль",
+        "macros": "15/11/18",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/b98/200_150_1/qppxogttjvp1al3mgwip5h6qi9o2gif0.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блины с курицей и грибами 160 г",
+        "price": "140 руб.",
+        "weight_kcal": "Вес: 160 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/649/200_150_1/ipl2b79qv2o1kxzpj2yfw3823fyq93aw.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блины с черной смородиной и яблоком 210 г",
+        "price": "161 руб.",
+        "weight_kcal": "Вес: 210 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/c87/200_150_1/b9osqmtb2m47iyfzsko1x4zsxtay7sc3.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Блины шоколадные с апельсином 150 г",
+        "price": "127 руб.",
+        "weight_kcal": "Вес: 150 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/aca/200_150_1/ynffswlg9641fyrm9xu5uiwblvbcd7f2.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Сырный блин по-голландски 140 г",
+        "price": "124 руб.",
+        "weight_kcal": "Вес: 140 г., 320 ккал",
+        "composition": "Молоко 3,2%, мука пшеничная, сыр, яйцо, масло подсолнечное, сахар, соль, майонез 67%, чеснок",
+        "macros": "10/22/18",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6a1/200_150_1/r8ogq57c1q0xagu3uyc05xb4g36ifdzq.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Сырный блин с куриным филе 140 г",
+        "price": "124 руб.",
+        "weight_kcal": "Вес: 140 г., 223 ккал",
+        "composition": "Молоко, сыр, яйцо, куриное филе, томаты, майонез, масло, лук, укроп, перец чёрный",
+        "macros": "16/11/16",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0d8/200_150_1/7wpzifg9ty07thdb5m0hj1rktpe69u3q.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Роллы",
+    "items": [
+      {
+        "name": "Ролл с ветчиной и сыром 170 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 170 г., 146 ккал",
+        "composition": "Лаваш, ветчина, сыр, огурцы, салат",
+        "macros": "5/5/18",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/a4c/200_150_1/03c8l5hcdflko8s3k77rhpkjjc7kml8z.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Ролл с куриной грудкой 170 г",
+        "price": "172 руб.",
+        "weight_kcal": "Вес: 170 г., 256 ккал",
+        "composition": "Лаваш, куриная грудка, сыр, помидоры, соус, салат",
+        "macros": "11/13/20",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/976/200_150_1/s9piwsbg7w8pniezp888zves7wfp0873.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Ролл с лососем 170 г",
+        "price": "187 руб.",
+        "weight_kcal": "Вес: 170 г., 245 ккал",
+        "composition": "Лаваш, лосось пряного посола, блин яичный, помидоры, капуста пекинская, масло сливочное",
+        "macros": "10/12/21",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/093/200_150_1/0q98qfba23btmfif9ro0onk0aycwbqur.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Твистер с курицей 200 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 200 г., 201 ккал",
+        "composition": "Лаваш, наггетсы куриные, хашбраун картофельный, огурцы, соус",
+        "macros": "11/8/22",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d78/200_150_1/gw4gxjl1bq466kyhixj801bj1fnrqc25.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Шаурма с курицей 230 г",
+        "price": "179 руб.",
+        "weight_kcal": "Вес: 230 г., 175 ккал",
+        "composition": "Лаваш, филе куриное, капуста б/к, томаты, огурцы маринованные, соль, чеснок, перец, яйцо, соус",
+        "macros": "11/7/17",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/8de/200_150_1/jbet5q3zrz7bt77nvrluw1lrrhtv139g.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Сэндвичи",
+    "items": [
+      {
+        "name": "Багет с бужениной (пикантный) 240 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 240 г., 238 ккал",
+        "composition": "Багет пшеничный, буженина, соус пикантный, томаты, капуста пекинская",
+        "macros": "9/10/29",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/278/200_150_1/m78xfs12voc01hvs8b36vyxg4w3necmk.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Багет с ветчиной 240 г",
+        "price": "149 руб.",
+        "weight_kcal": "Вес: 240 г., 271 ккал",
+        "composition": "Багет пшеничный, ветчина, капуста, соус, специи",
+        "macros": "11/14/30",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6b9/200_150_1/ltmjbqm695ohx3vyxta80lsig7r0hkst.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Багет с куриной грудкой 240 г",
+        "price": "149 руб.",
+        "weight_kcal": "Вес: 240 г., 280 ккал",
+        "composition": "Багет пшеничный, куриное филе, капуста, соус",
+        "macros": "14/14/28",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/c7f/200_150_1/lfemw0gamo0gnwksfbflll5hrp5ngikz.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Багет с куриным рулетом (манхэттен) 250 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 250 г., 261 ккал",
+        "composition": "Багет пшеничный, рулет куриный, огурец маринованный, капуста пекинская, соус",
+        "macros": "9/13/29",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ac5/200_150_1/tyi01cajg4gxs3owgkcoy08iohph8ave.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Багет с рулетом из индейки (сан-сет) 250 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 250 г., 277 ккал",
+        "composition": "Багет пшеничный, рулет из индейки, сыр, пекинская капуста, соус",
+        "macros": "12/13/29",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ef3/200_150_1/5p3n2yf7t3m9l6ji2rzty00u1zixp2i9.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Багет с сыром и ветчиной \"Пикник\" 250 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 250 г., 240 ккал",
+        "composition": "Багет пшеничный, ветчина, сыр, огурцы маринованные, капуста пекинская, соус",
+        "macros": "9/9/30",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/43f/200_150_1/em14gb7mrmwamheuekjoo1jtihrko791.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Бургер с куриной котлетой 180 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 180 г.",
+        "composition": "Мука пшеничная в/с, масло подсолнечное, кунжут, филе куриной грудки, лук, яйцо куриное, майонез, томаты, огурцы маринованные, салат Айсбер, лук красный.",
+        "macros": "11/12/22",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/dec/200_150_1/2strmfgtrlpttd17cu2btiii0l4dfgn0.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Бутерброд с красной рыбой 180 г",
+        "price": "194 руб.",
+        "weight_kcal": "Вес: 170 г., 292 ккал",
+        "composition": "Мука пшеничная в/с, масло подсолнечное, лосось солёный, томаты, сыр творожный, салат Айсберг, соус.",
+        "macros": "10/16/25",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/3de/200_150_1/v37qfyhat6g87j6sq212i0zwoo715d15.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Бутерброд с куриной грудкой (Эконом) 180 г",
+        "price": "149 руб.",
+        "weight_kcal": "Вес: 170 г., 259 ккал",
+        "composition": "Хлеб пшеничный, куриное филе, капуста пекинская, лук, майонез, хрен ¶",
+        "macros": "13/10/31",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/534/200_150_1/j49j2ltcli2l6tmwoa915vgw4vdbtbmm.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Бутерброд с курицей и беконом 180 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 170 г., 315 ккал",
+        "composition": "Хлеб, куриное филе в/к, бекон в/к, томаты, соус \"Цезарь\", салат",
+        "macros": "10/17/31",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/099/200_150_1/wvjw5yjxlpyci38831m7d2oeedxift1u.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Бутерброд с семгой 180 г",
+        "price": "283 руб.",
+        "weight_kcal": "Вес: 170 г., 258 ккал",
+        "composition": "Хлеб тостовый, семга соленая, соус зеленый, помидоры, салат \"Айсберг\"",
+        "macros": "8/14/23",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ec1/200_150_1/wd7uln6go6h0tros4tfuhol98icz3rqv.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Бутерброд с сыром и ветчиной 180 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 170 г., 272 ккал",
+        "composition": "Хлеб тостовый, ветчина, соус, сыр, огурцы маринованные, салат",
+        "macros": "11/12/30",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/dab/200_150_1/y45k84f2bfx6tlvffwjzvak928iw0rxi.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Гамбургер с бифштексом рубленным 200г",
+        "price": "194 руб.",
+        "weight_kcal": "Вес: 230 г., 310 ккал",
+        "composition": "Кунжут, говядина, курица, лук, помидоры, салат, майонез, специи",
+        "macros": "10/16/30",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/3e2/200_150_1/zbmhws1g0iekfn5yquu8h3dku4yt30jw.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Кесадилья с ветчиной из индейки и сыром 230 г",
+        "price": "230 руб.",
+        "weight_kcal": "Вес: 230 г., 201 ккал",
+        "composition": "ветчина из индейки, сыр Моцарелла, томаты, лук, морковь, перец, соль, масло растительное",
+        "macros": "8/15/5",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ee4/200_150_1/n0cftlx9ofbqah53jm144z1umw11bm1d.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Кесадилья с курицей",
+        "price": "207 руб.",
+        "weight_kcal": "Вес: 200 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/f08/200_150_1/284467zn1uryhwu3iy61kg7q6gb32o0m.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Паровая булочка с курицей 140 г",
+        "price": "142 руб.",
+        "weight_kcal": "Вес: 140 г., 240 ккал",
+        "composition": "Куриное филе, томаты, капуста, огурцы, морковь, соус",
+        "macros": "10/9/27",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/547/200_150_1/trf8r7gjud2hqyq9z5oqt3l1zz5ui2e5.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Сэндвич-ролл с омлетом, ветчиной и сыром 180 г",
+        "price": "164 руб.",
+        "weight_kcal": "Вес: 180 г., 280 ккал",
+        "composition": "Тортилья, сыр, ветчина, салат Айсберг, томаты.",
+        "macros": "8/16/24",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d00/200_150_1/4rbucseuv2cae8qvz23sfrp6l0h8l34e.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Фахитос с индейкой 230 г",
+        "price": "239 руб.",
+        "weight_kcal": "Вес: 230 г., 225 ккал",
+        "composition": "лепешка тортилья, филе индейки, помидоры, перец болгарский, фасоль стручковая, лук, сыр, специи",
+        "macros": "11/12/15",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d51/200_150_1/n3y78suee26izw2kr62brulwfrf40fri.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Выпечка",
+    "items": [
+      {
+        "name": "Булочка с маком 100 г",
+        "price": "76 руб.",
+        "weight_kcal": "Вес: 100 г., 290 ккал",
+        "composition": "Мука в/с, сахар, маргарин, яйцо, дрожжи, соль, мак, молоко",
+        "macros": "7/12/37",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/6c1/200_150_1/wptt2pqhfg01reowd8fz2u7cd96t8tp3.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Ватрушки мини с творогом 200 г",
+        "price": "144 руб.",
+        "weight_kcal": "Вес: 200 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/4c1/200_150_1/ra3aqivfg3u26c3kz2n0trxi0xlc30hl.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Ватрушки-мини с творогом и вишней 200 г",
+        "price": "152 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/ced/200_150_1/ml85ettxbrnv10u2fju3ny42lasx9sbj.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Курник 100 г",
+        "price": "86 руб.",
+        "weight_kcal": "Вес: 100 г., 294 ккал",
+        "composition": "Мука пшеничная в/с, масло сливочное, филе куриной грудки, картофель, лук, масло подсолнечное, соль.",
+        "macros": "10/14/30",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/fb7/200_150_1/z6mtj0ope0kdqbgfef15xw1dstguy9mi.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Кутабы с зеленью и сыром 150 г",
+        "price": "151 руб.",
+        "weight_kcal": "Вес: 150 г., 292 ккал",
+        "composition": "Мука пшеничная в/с, масло подсолнечное, шпинат, укроп, петрушка, брынза, сыр, лук, соль",
+        "macros": "9/16/27",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/7fe/200_150_1/x596zqzamzt3p4ik5yuo06hqy1oxqtt3.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Маффин морковный 100 г",
+        "price": "69 руб.",
+        "weight_kcal": "Вес: 100 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/787/200_150_1/1qxwtq3qi2ehmubspcyptlatcjtwswz5.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Маффин творожный 100 г",
+        "price": "75 руб.",
+        "weight_kcal": "Вес: 100 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/35b/200_150_1/ou9qy6rwka6w1fz7qxmxlq8ls8w786tk.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Маффин тыквенный 100 г",
+        "price": "69 руб.",
+        "weight_kcal": "Вес: 100 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/1ac/200_150_1/90grdv2liezg4t8msmrxlg7qdgr83023.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Маффин шоколадный 100 г",
+        "price": "75 руб.",
+        "weight_kcal": "Вес: 100 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/d12/200_150_1/99ne0255rul8n86aq23jzzg9swgi4uzj.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Мини пирожок с мясом 135 г",
+        "price": "157 руб.",
+        "weight_kcal": "Вес: 135 г., 359 ккал",
+        "composition": "Мука пшеничная в/с, молоко, яйцо, говядина, свинина, лук, масло подсолнечное, соль, перец черный",
+        "macros": "11/16/41",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/779/200_150_1/d6k8ig3o8mlbxs9mk29kxngkhzdoxkhr.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Мини пирожок с яблоком 135 г",
+        "price": "137 руб.",
+        "weight_kcal": "Вес: 135 г., 184 ккал",
+        "composition": "Тесто, яблоки, сахар, корица, яйцо",
+        "macros": "8/3/32",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/176/200_150_1/rakwdmxghgn4sj3icpq1btmn5b2gs1la.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Мини-пицца с колбасой 90 г",
+        "price": "99 руб.",
+        "weight_kcal": "Вес: 90 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/7b5/200_150_1/1eygex58mk0eaoyz8ekijd8jdz3pb01s.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пирожок печеный с абрикосом 100 г",
+        "price": "72 руб.",
+        "weight_kcal": "Вес: 100 г., 331 ккал",
+        "composition": "Тесто, курага, яблоки, сахар, кунжут, яйцо",
+        "macros": "6/10/53",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/a21/200_150_1/t9npr5aa3ka4qndt1exmvgmu9sc5czbh.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пирожок печеный с капустой 1/100гр.",
+        "price": "63 руб.",
+        "weight_kcal": "Вес: 100 г., 266 ккал",
+        "composition": "Мука пшеничная в/с, яйцо, капуста, лук, масло подсолнечное",
+        "macros": "6/9/40",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/bd0/200_150_1/1hr9d8wawttxzfxgvm742piwt36uejph.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пирожок печеный с мясом 1/100г",
+        "price": "86 руб.",
+        "weight_kcal": "Вес: 100 г., 363 ккал",
+        "composition": "Мука пшеничная в/с, молоко, яйцо, говядина, свинина, лук, масло подсолнечное, соль, перец черный",
+        "macros": "12/16/40",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/051/200_150_1/21nq4eingk7krdxf7rleqfp06nh9gptc.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пирожок печеный с яблоком 1/100гр.",
+        "price": "72 руб.",
+        "weight_kcal": "Вес: 100 г., 287 ккал",
+        "composition": "Тесто, яблоки, сахар, корица, яйцо",
+        "macros": "5/5/53",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/acc/200_150_1/h3eb149d3jirqu4466h9ofw333uqsa2b.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Пирожок печёный с яйцом и зелёным луком 100г",
+        "price": "72 руб.",
+        "weight_kcal": "Вес: 100 г., 308 ккал",
+        "composition": "Мука в/с, молоко, яйцо, сахар, дрожжи, соль, лук, специи",
+        "macros": "10/12/39",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/2bb/200_150_1/exn60n0kfih2r19cpnwgrsz8cguhi0dc.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Самса с курицей 150 г",
+        "price": "137 руб.",
+        "weight_kcal": "Вес: 150 г., 365 ккал",
+        "composition": "Мука в/с, вода, маргарин, яйцо, соль, лук репчатый, курица,",
+        "macros": "10/23/27",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/df5/200_150_1/opndnkvoxrfpsmch2kz74uf8nbhtt5lc.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Слойка с вишней 100 г",
+        "price": "72 руб.",
+        "weight_kcal": "Вес: 100 г., 360 ккал",
+        "composition": "Мука пшеничная в/с, молоко, маргарин, яйцо, вишня, сахар",
+        "macros": "4/20/40",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/46c/200_150_1/velie837ma7107gj940opoa5v8j2kjqx.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Сосиска в тесте 110 г",
+        "price": "103 руб.",
+        "weight_kcal": "Вес: 110 г., 335 ккал",
+        "composition": "Мука пшеничная в/с, молоко, сахар, масло подсолнечное, яйцо, сосиска молочная ГОСТ",
+        "macros": "10/20/27",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/3b9/200_150_1/4slx4webbokrw8ry8nlywwjtd7v5leq6.gif",
+        "type": "dish"
+      },
+      {
+        "name": "Сочник с творогом 100 г",
+        "price": "72 руб.",
+        "weight_kcal": "Вес: 100 г., 392 ккал",
+        "composition": "Мука пшеничня в/с, сахар, яйцо, масло сливочное, творог",
+        "macros": "10/13/57",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/2ed/200_150_1/e2d846hq3u8nte4pw1o8wo2acet1wpm5.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Чебуреки с мясом 120 г (2 шт)",
+        "price": "137 руб.",
+        "weight_kcal": "Вес: 120 г., 271 ккал",
+        "composition": "Мука пшеничная, меланж, говядина, филе куриной грудки, лук репчатый, масло подсолнечное, соль, перец черный",
+        "macros": "8/13/30",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/a7d/200_150_1/s1lhd4341kapyzz8wpqja5e4iyel1qra.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Чебуреки с сыром 140 г (упак. 2 шт.)",
+        "price": "151 руб.",
+        "weight_kcal": "Вес: 140 г., 277 ккал",
+        "composition": "Мука пшеничная в/с, яйцо, сыр,",
+        "macros": "15/15/19",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/1c1/200_150_1/yfw4uam1lk9pzqg1r0fxvpr9jrbq4j5o.jpg",
+        "type": "dish"
+      }
+    ]
+  },
+  {
+    "category": "Напитки",
+    "items": [
+      {
+        "name": "Вода \"Святой источник\" (без газа) 0,5 л.",
+        "price": "46 руб.",
+        "weight_kcal": "Вес: 500 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/4fd/200_150_1/txcu8r05j2ooo5d8zwoepta8xg2ye4pa.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Вода \"Святой источник\" (с газом) 0,5 л.",
+        "price": "46 руб.",
+        "weight_kcal": "Вес: 500 г.",
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/5a2/200_150_1/6odbc56xhu2uo4lnojgtgxqhcwvxwbd6.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Какао с молоком 1/500гр.",
+        "price": "95 руб.",
+        "weight_kcal": "Вес: 500 г., 64 ккал",
+        "composition": "Какао-порошок, молоко, вода, сахар",
+        "macros": "2/2/8",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/0f8/200_150_1/h5fxrxuqy1bfr4ghdi2i5uv873lelpnu.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Сок \"Диас\" абрикос 0,2 л.",
+        "price": "39 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/1da/200_150_1/6ht7eibw0cnb5yy7nnsixk4nuhetdbz1.gif",
+        "type": "dish"
+      },
+      {
+        "name": "Сок \"Диас\" апельсин 0,2 л.",
+        "price": "39 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/08c/200_150_1/z9vnx8dmvb8yy2dfrvnayekn2vssx5lh.gif",
+        "type": "dish"
+      },
+      {
+        "name": "Сок \"Диас\" томат 0,2 л.",
+        "price": "39 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/local/templates/main_new_home_2020/images/no_img/no-image-available-icon-6.png",
+        "type": "dish"
+      },
+      {
+        "name": "Сок \"Диас\" яблоко 0,2 л.",
+        "price": "39 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/4a8/200_150_1/g791qcsri61s6fhgxbe6xhm4675j73bx.gif",
+        "type": "dish"
+      },
+      {
+        "name": "Черноголовка \"Байкал\" 0,5 л",
+        "price": "57 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/b45/200_150_1/mv3930qw4zh20lewa2ki1mbfe75v64eu.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Черноголовка \"Дюшес\" 0,5 л",
+        "price": "57 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/1b9/200_150_1/h8dggusb7ykqbalsl3w0383d8todkqgk.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Черноголовка \"Тархун\" 0,5 л",
+        "price": "57 руб.",
+        "weight_kcal": null,
+        "composition": null,
+        "macros": "0/0/0",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/bc6/200_150_1/cntedxou06mdcze3g62bo09c6yezgg58.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Яблочно-вишневый компот 300 г",
+        "price": "77 руб.",
+        "weight_kcal": "Вес: 300 г., 35 ккал",
+        "composition": "Яблоко, вишня, вода, сахар, лимон",
+        "macros": "0/0/7",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/c47/200_150_1/fuf0acfab8z6xq85y3dkhd5c8bqq507p.jpg",
+        "type": "dish"
+      },
+      {
+        "name": "Яблочно-вишневый компот 500 г",
+        "price": "97 руб.",
+        "weight_kcal": "Вес: 500 г., 35 ккал",
+        "composition": "Яблоко, вишня, вода, сахар, лимон",
+        "macros": "0/0/7",
+        "image": "https://www.nam-nyam.ru/upload/resize_cache/iblock/67e/200_150_1/t63qa1ma8dq8pha48k1oh5bx5lnsioth.jpg",
+        "type": "dish"
+      }
+    ]
+  }
+]

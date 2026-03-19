@@ -1,0 +1,281 @@
+{% extends 'orders/base.html' %}
+
+{% block title %}Каталог - Заказ обедов{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .hero {
+        text-align: center;
+        padding: 4rem 0 3rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .catalog-section {
+        padding: 2rem 0 4rem;
+    }
+
+    .category-section {
+        margin-bottom: 4rem;
+    }
+
+    .category-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .category-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .category-count {
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 2rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .product-card {
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 1.25rem;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+    }
+
+    .product-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+    }
+
+    .product-card:hover::before {
+        opacity: 0.05;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: var(--primary-color);
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+        position: relative;
+        z-index: 1;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-image img {
+        transform: scale(1.1);
+    }
+
+    .no-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+    }
+
+    .product-content {
+        padding: 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .product-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+    }
+
+    .product-description {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .product-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+        font-weight: 800;
+        background: var(--gradient-success);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .price-missing {
+        background: var(--gradient-secondary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 1rem;
+        font-weight: 600;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .product-restaurant {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        background: var(--bg-tertiary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.5rem;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+    }
+
+    .empty-state-icon {
+        font-size: 5rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+    }
+
+    .empty-state h3 {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+        color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+
+        .products-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1>🍽️ Вкусные обеды каждый день</h1>
+        <p>Выбирайте из нашего разнообразного меню и наслаждайтесь качественной едой</p>
+    </div>
+</div>
+
+<div class="catalog-section">
+    <div class="container">
+        {% if groups %}
+        {% for group in groups %}
+        <div class="category-section">
+            <div class="category-header">
+                <h2>{{ group.name }}</h2>
+                <span class="category-count">{{ group.items.count }} позиций</span>
+            </div>
+
+            <div class="products-grid">
+                {% for item in group.items.all %}
+                {% if item.is_available and item.price %}
+                <div class="product-card">
+                    <div class="product-image">
+                        {% if item.get_primary_image %}
+                        <img src="{{ item.get_primary_image.image.url }}" alt="{{ item.name }}">
+                        {% else %}
+                        <div class="no-image">🍴</div>
+                        {% endif %}
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-name">{{ item.name }}</h3>
+                        {% if item.description %}
+                        <p class="product-description">{{ item.description }}</p>
+                        {% endif %}
+                        <div class="product-footer">
+                            <div class="product-price">{{ item.price }} ₽</div>
+                            <div class="product-restaurant">{{ item.restaurant.name }}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-state-icon">🍽️</div>
+            <h3>Меню пока пусто</h3>
+            <p>Скоро здесь появятся вкусные блюда!</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

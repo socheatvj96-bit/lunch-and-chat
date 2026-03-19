@@ -1,0 +1,140 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">Главная</a>
+    &rsaquo; <a href="{% url 'admin:orders_menuitem_changelist' %}">Товары меню</a>
+    &rsaquo; Импорт товаров
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>📦 Импорт товаров из Excel</h1>
+
+    {% if success %}
+    <div
+        style="background: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        <strong>✅ {{ success }}</strong>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div
+        style="background: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        <strong>❌ {{ error }}</strong>
+    </div>
+    {% endif %}
+
+    {% if errors %}
+    <div
+        style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+        <strong>⚠️ Предупреждения:</strong>
+        <ul style="margin-top: 10px;">
+            {% for err in errors %}
+            <li>{{ err }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+        <!-- Шаг 1: Скачать шаблон -->
+        <div
+            style="flex: 1; min-width: 300px; background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+            <h2 style="color: #495057; margin-top: 0;">📥 Шаг 1: Скачать шаблон</h2>
+            <p>Скачайте шаблон Excel с примерами и справочниками категорий, групп и ресторанов.</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="download_template" class="default"
+                    style="padding: 10px 20px; font-size: 14px; cursor: pointer;">
+                    ⬇️ Скачать шаблон Excel
+                </button>
+            </form>
+        </div>
+
+        <!-- Шаг 2: Заполнить и загрузить -->
+        <div
+            style="flex: 1; min-width: 300px; background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #dee2e6;">
+            <h2 style="color: #495057; margin-top: 0;">📤 Шаг 2: Загрузить заполненный файл</h2>
+            <p>Заполните шаблон и загрузите обратно. <strong style="color: #dc3545;">Категория обязательна!</strong></p>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div style="margin-bottom: 15px;">
+                    <label for="id_excel_file" style="display: block; margin-bottom: 5px; font-weight: bold;">Excel файл
+                        (.xlsx):</label>
+                    <input type="file" name="excel_file" id="id_excel_file" accept=".xlsx" required
+                        style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                </div>
+                <button type="submit" name="import_file" class="default"
+                    style="padding: 10px 20px; font-size: 14px; cursor: pointer; background: #28a745; color: white; border: none; border-radius: 4px;">
+                    ⬆️ Импортировать товары
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Инструкция -->
+    <div style="margin-top: 30px; background: #e7f3ff; padding: 20px; border-radius: 8px; border: 1px solid #b3d7ff;">
+        <h3 style="margin-top: 0; color: #0056b3;">📋 Инструкция по заполнению</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #cce5ff;">
+                    <th style="padding: 10px; border: 1px solid #99caff; text-align: left;">Столбец</th>
+                    <th style="padding: 10px; border: 1px solid #99caff; text-align: left;">Обязательный</th>
+                    <th style="padding: 10px; border: 1px solid #99caff; text-align: left;">Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;"><strong>Название</strong></td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">✅ Да</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">Название товара</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;"><strong>Описание</strong></td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">❌ Нет</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">Описание товара</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;"><strong>Цена</strong></td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">❌ Нет</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">Цена в рублях (число)</td>
+                </tr>
+                <tr style="background: #fff3cd;">
+                    <td style="padding: 8px; border: 1px solid #dee2e6;"><strong>Категория</strong></td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">✅ <strong>ДА!</strong></td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">Категория товара (см. справочник в шаблоне)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;"><strong>Группа</strong></td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">❌ Нет</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">Группа товара (см. справочник в шаблоне)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;"><strong>Ресторан</strong></td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">❌ Нет</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">Ресторан (если не указан - берётся первый)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;"><strong>Доступен</strong></td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">❌ Нет</td>
+                    <td style="padding: 8px; border: 1px solid #dee2e6;">"да" или "нет" (по умолчанию "да")</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="margin-top: 20px;">
+        <a href="{% url 'admin:orders_menuitem_changelist' %}" style="color: #0056b3;">← Вернуться к списку товаров</a>
+    </p>
+</div>
+{% endblock %}

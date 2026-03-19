@@ -1,0 +1,199 @@
+{% extends "orders/base.html" %}
+{% load static %}
+
+{% block title %}Сводка (мобильная){% endblock %}
+
+{% block extra_styles %}
+<style>
+    .svodka-mob { padding: 1rem 0; }
+    .svodka-mob h1 { margin-bottom: 0.75rem; font-size: 1.35rem; }
+    .filter-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+    }
+    .filter-form { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; }
+    .filter-form .form-group { margin-bottom: 0; min-width: 0; }
+    .filter-form label { display: block; margin-bottom: 0.25rem; font-weight: 600; font-size: 0.85rem; }
+    .filter-form input[type="date"] {
+        padding: 0.45rem 0.5rem;
+        background: rgba(15, 23, 42, 0.6);
+        border: 2px solid var(--border-color);
+        border-radius: 0.5rem;
+        color: var(--text-primary);
+        width: 100%;
+        max-width: 160px;
+    }
+    .filter-form .btn { flex-shrink: 0; }
+    .export-wrap { margin-bottom: 1rem; }
+    .btn-export {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+        background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+        color: #fff;
+        border: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-decoration: none;
+        box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+    }
+    .btn-export:hover { opacity: 0.95; transform: translateY(-1px); }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1rem; }
+    .svodka-mob-table {
+        width: max-content;
+        min-width: 100%;
+        border-collapse: collapse;
+        background: rgba(30, 41, 59, 0.4);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        font-size: 0.8rem;
+    }
+    .svodka-mob-table th, .svodka-mob-table td {
+        padding: 0.35rem 0.45rem;
+        text-align: left;
+        border: 1px solid var(--border-color);
+    }
+    .svodka-mob-table th { background: rgba(99, 102, 241, 0.25); font-weight: 600; }
+    .svodka-mob-table .num { text-align: right; white-space: nowrap; }
+    .svodka-mob-table .total-row { font-weight: 700; background: rgba(99, 102, 241, 0.2); }
+    .svodka-mob-table .title-row td { font-weight: 600; font-size: 0.9rem; padding: 0.4rem; }
+    .svodka-mob-table .date-row th { text-align: center; font-size: 0.75rem; }
+    .svodka-mob-table .subheader th { font-weight: 500; font-size: 0.7rem; }
+    .no-data { color: var(--text-muted); padding: 1.5rem; text-align: center; }
+
+    /* Карточки для узких экранов (опционально) */
+    @media (max-width: 640px) {
+        .svodka-mob-cards { display: block; }
+        .svodka-mob-table-wrap { display: none; }
+    }
+    @media (min-width: 641px) {
+        .svodka-mob-cards { display: none; }
+        .svodka-mob-table-wrap { display: block; }
+    }
+    .emp-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.75rem;
+    }
+    .emp-card .name { font-weight: 700; margin-bottom: 0.5rem; }
+    .emp-card .row { display: flex; justify-content: space-between; padding: 0.25rem 0; font-size: 0.85rem; }
+    .emp-card .total-row { font-weight: 700; border-top: 1px solid var(--border-color); margin-top: 0.35rem; padding-top: 0.35rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container svodka-mob">
+    <h1>Сводка заказов</h1>
+
+    <div class="filter-card">
+        <form class="filter-form" method="get" action="{% url 'svodka_mob' %}">
+            <div class="form-group">
+                <label for="start_date">Начало</label>
+                <input type="date" name="start_date" id="start_date" value="{{ start_date }}" required>
+            </div>
+            <div class="form-group">
+                <label for="end_date">Конец</label>
+                <input type="date" name="end_date" id="end_date" value="{{ end_date }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Показать</button>
+        </form>
+    </div>
+
+    <div class="export-wrap">
+        <a href="?export=xlsx&amp;start_date={{ start_date }}&amp;end_date={{ end_date }}" class="btn-export">
+            Выгрузить в Excel
+        </a>
+    </div>
+
+    {% if dates %}
+    <div class="svodka-mob-cards">
+        {% for r in table_rows %}
+        <div class="emp-card">
+            <div class="name">{{ r.num }}. {{ r.name }}</div>
+            {% for cell in r.day_cells_with_date %}
+            <div class="row">{{ cell.date_label }} ({{ cell.day_name }}): {{ cell.fact|floatformat:0 }} ₽</div>
+            {% endfor %}
+            <div class="row total-row">Итого: {{ r.fact_total|floatformat:0 }} ₽ · Остаток: {{ r.balance|floatformat:0 }}</div>
+        </div>
+        {% endfor %}
+        <div class="emp-card total-row">Всего за период: {{ grand_total_fact|floatformat:0 }} ₽</div>
+    </div>
+
+    <div class="svodka-mob-table-wrap">
+        <div class="table-scroll">
+            <table class="svodka-mob-table">
+                <thead>
+                    <tr class="title-row">
+                        <td colspan="{{ title_colspan }}" style="text-align: center;">Траты на обеды с {{ start_date }} по {{ end_date }} года</td>
+                    </tr>
+                    <tr class="date-row">
+                        <th style="width: 2rem;">№</th>
+                        <th style="min-width: 8rem;">Сотрудник</th>
+                        <th>факт. оплата компании</th>
+                        <th>факт. оплата сотрудником</th>
+                        {% for d, day_name in date_headers %}
+                        <th colspan="3" style="text-align: center;">{{ d|date:"d.m" }} ({{ day_name }})</th>
+                        {% endfor %}
+                        <th>факт</th>
+                        <th>остаток</th>
+                    </tr>
+                    <tr class="subheader">
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        {% for d in dates %}
+                        <th class="num">факт</th>
+                        <th class="num">комп.</th>
+                        <th class="num">сотр.</th>
+                        {% endfor %}
+                        <th class="num">факт</th>
+                        <th class="num">остаток</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in table_rows %}
+                    <tr>
+                        <td class="num">{{ r.num }}</td>
+                        <td>{{ r.name }}</td>
+                        <td class="num">{{ r.fact_company_prepay|floatformat:0 }}</td>
+                        <td class="num">{{ r.fact_employee_prepay|floatformat:0 }}</td>
+                        {% for cell in r.day_cells %}
+                        <td class="num">{{ cell.fact|floatformat:0 }}</td>
+                        <td class="num">{{ cell.company|floatformat:0 }}</td>
+                        <td class="num">{{ cell.employee|floatformat:0 }}</td>
+                        {% endfor %}
+                        <td class="num">{{ r.fact_total|floatformat:0 }}</td>
+                        <td class="num">{{ r.balance|floatformat:0 }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="total-row">
+                        <td></td>
+                        <td>Итого:</td>
+                        <td class="num">0</td>
+                        <td class="num">0</td>
+                        {% for cell in total_day_cells %}
+                        <td class="num">{{ cell.fact|floatformat:0 }}</td>
+                        <td class="num">{{ cell.company|floatformat:0 }}</td>
+                        <td class="num">{{ cell.employee|floatformat:0 }}</td>
+                        {% endfor %}
+                        <td class="num">{{ grand_total_fact|floatformat:0 }}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% else %}
+    <p class="no-data">Выберите период и нажмите «Показать».</p>
+    {% endif %}
+</div>
+{% endblock %}

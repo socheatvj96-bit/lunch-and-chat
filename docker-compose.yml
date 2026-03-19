@@ -1,0 +1,114 @@
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: lunch_order
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+      - /var/www/victor.kiselev.lol/media:/app/media
+      - /opt/lunch_order/staticfiles:/app/staticfiles
+    ports:
+      - "8082:8000"
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=DJANGO_SECRET_KEY_REMOVED
+      - TELEGRAM_BOT_TOKEN=TELEGRAM_BOT_TOKEN_REMOVED
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/lunch_order
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - STATIC_HOST_PATH=/opt/lunch_order/staticfiles_host
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    entrypoint: [ "/entrypoint.sh" ]
+    healthcheck:
+      test: [ "CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/', timeout=3)\"" ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+  celery:
+    build: .
+    restart: unless-stopped
+    command: celery -A lunch_order worker -l info
+    volumes:
+      - .:/app
+      - /var/www/victor.kiselev.lol/media:/app/media
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=DJANGO_SECRET_KEY_REMOVED
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/lunch_order
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+      - web
+    entrypoint: [ "/entrypoint.sh" ]
+
+  celery-beat:
+    build: .
+    restart: unless-stopped
+    command: celery -A lunch_order beat -l info
+    volumes:
+      - .:/app
+      - /var/www/victor.kiselev.lol/media:/app/media
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=DJANGO_SECRET_KEY_REMOVED
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/lunch_order
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+      - web
+    entrypoint: [ "/entrypoint.sh" ]
+
+  telegram-bot:
+    build: .
+    restart: unless-stopped
+    command: python manage.py run_bot
+    volumes:
+      - .:/app
+      - /var/www/victor.kiselev.lol/media:/app/media
+    environment:
+      - DEBUG=1
+      - DJANGO_ALLOW_ASYNC_UNSAFE=true
+      - SECRET_KEY=DJANGO_SECRET_KEY_REMOVED
+      - TELEGRAM_BOT_TOKEN=TELEGRAM_BOT_TOKEN_REMOVED
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/lunch_order
+    depends_on:
+      - db
+      - web
+    entrypoint: [ "/entrypoint.sh" ]
+
+volumes:
+  postgres_data:
+  staticfiles_volume:

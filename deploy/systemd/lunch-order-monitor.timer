@@ -1,0 +1,11 @@
+[Unit]
+Description=Run lunch_order monitor every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+AccuracySec=10s
+Unit=lunch-order-monitor.service
+
+[Install]
+WantedBy=timers.target

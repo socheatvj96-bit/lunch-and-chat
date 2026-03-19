@@ -1,0 +1,16 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools-items %}
+<li>
+    <a href="{% url 'admin:orders_menuitemgroup_import_excel' %}" class="addlink">
+        Импорт из Excel
+    </a>
+</li>
+<li>
+    <a href="{% url 'admin:orders_menuitemgroup_export_template' %}" class="addlink">
+        Скачать шаблон Excel
+    </a>
+</li>
+{{ block.super }}
+{% endblock %}
+

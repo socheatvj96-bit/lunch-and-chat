@@ -1,0 +1,202 @@
+{% extends "orders/base.html" %}
+{% load static %}
+
+{% block title %}Сводка по неделям (финансы){% endblock %}
+
+{% block extra_styles %}
+<style>
+    .svodka-mob2 { padding: 1rem 0; }
+    .svodka-mob2 h1 { margin-bottom: 0.75rem; font-size: 1.35rem; }
+    .filter-card {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+    }
+    .filter-form { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; }
+    .filter-form .form-group { margin-bottom: 0; min-width: 0; }
+    .filter-form label { display: block; margin-bottom: 0.25rem; font-weight: 600; font-size: 0.85rem; }
+    .filter-form input[type="date"] {
+        padding: 0.45rem 0.5rem;
+        background: rgba(15, 23, 42, 0.6);
+        border: 2px solid var(--border-color);
+        border-radius: 0.5rem;
+        color: var(--text-primary);
+        max-width: 160px;
+    }
+    .filter-form .btn { flex-shrink: 0; }
+
+    .week-block {
+        background: rgba(30, 41, 59, 0.5);
+        border: 1px solid var(--border-color);
+        border-radius: 0.75rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .week-block h2 { font-size: 1.15rem; margin-bottom: 0.75rem; font-weight: 700; }
+    .week-meta {
+        display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+        margin-bottom: 1rem; padding: 0.75rem; background: rgba(15, 23, 42, 0.4); border-radius: 0.5rem;
+    }
+    .week-meta .field { display: flex; align-items: center; gap: 0.5rem; }
+    .week-meta label { font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
+    .week-meta input[type="number"] {
+        width: 100px; padding: 0.4rem 0.5rem;
+        background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border-color);
+        border-radius: 0.5rem; color: var(--text-primary);
+    }
+    .week-meta .remainder { color: var(--text-muted); font-size: 0.9rem; }
+    .alert-non-week {
+        background: rgba(234, 179, 8, 0.2);
+        border: 1px solid rgba(234, 179, 8, 0.5);
+        border-radius: 0.5rem;
+        padding: 0.75rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 0.5rem; }
+    .svodka-mob2-table {
+        width: max-content;
+        min-width: 100%;
+        border-collapse: collapse;
+        background: rgba(30, 41, 59, 0.4);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        font-size: 0.8rem;
+    }
+    .svodka-mob2-table th, .svodka-mob2-table td {
+        padding: 0.35rem 0.45rem;
+        text-align: left;
+        border: 1px solid var(--border-color);
+    }
+    .svodka-mob2-table th { background: rgba(99, 102, 241, 0.25); font-weight: 600; }
+    .svodka-mob2-table .num { text-align: right; white-space: nowrap; }
+    .svodka-mob2-table .total-row { font-weight: 700; background: rgba(99, 102, 241, 0.2); }
+    .svodka-mob2-table .subheader th { font-weight: 500; font-size: 0.75rem; }
+    .no-data { color: var(--text-muted); padding: 1.5rem; text-align: center; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container svodka-mob2">
+    <h1>Финансовая сводка по неделям</h1>
+
+    <div class="filter-card">
+        <form class="filter-form" method="get" action="{% url 'svodka_mob2' %}">
+            <div class="form-group">
+                <label for="start_date">Начало</label>
+                <input type="date" name="start_date" id="start_date" value="{{ start_date }}" required>
+            </div>
+            <div class="form-group">
+                <label for="end_date">Конец</label>
+                <input type="date" name="end_date" id="end_date" value="{{ end_date }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Показать</button>
+        </form>
+        <div style="margin-top: 0.75rem;">
+            <a class="btn btn-primary" href="?export=xlsx&amp;start_date={{ start_date }}&amp;end_date={{ end_date }}">
+                Скачать Excel
+            </a>
+            <a class="btn" style="margin-left: 0.5rem;" href="{% url 'svodka_mob2_help' %}" target="_blank" rel="noopener">
+                Как считается таблица
+            </a>
+        </div>
+    </div>
+
+    {% if not is_one_week and weeks_data %}
+    <div class="alert-non-week">
+        Выбранный период — не одна неделя (пн–вс). Данные показаны по неделям.
+    </div>
+    {% endif %}
+
+    {% for w in weeks_data %}
+    <div class="week-block">
+        <h2>Неделя {{ w.week_number }} ({{ w.week_start|date:"d.m.Y" }} – {{ w.week_end|date:"d.m.Y" }})</h2>
+
+        <div class="week-meta">
+            <form method="post" action="{% url 'svodka_mob2' %}?start_date={{ start_date }}&end_date={{ end_date }}" style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
+                {% csrf_token %}
+                <input type="hidden" name="week_start" value="{{ w.week_start|date:'Y-m-d' }}">
+                <div class="field">
+                    <label for="amount-{{ w.week_number }}">Сколько дала компания на эту неделю (₽):</label>
+                    <input type="number" name="amount" id="amount-{{ w.week_number }}" value="{{ w.company_given|floatformat:0 }}" min="0" step="0.01">
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить и пересчитать</button>
+            </form>
+            <div class="field remainder">
+                Остаток с прошлой недели: <strong>{{ w.remainder_prev|floatformat:0 }} ₽</strong>
+            </div>
+        </div>
+
+        <div class="table-scroll">
+            <table class="svodka-mob2-table">
+                <thead>
+                    <tr>
+                        <th style="width: 2rem;">№</th>
+                        <th style="min-width: 7rem;">Сотрудник</th>
+                        <th class="num">Личный баланс</th>
+                        <th class="num">факт. оплата компании</th>
+                        <th class="num">факт. оплата сотрудником</th>
+                        {% for d, day_name in w.date_headers %}
+                        <th colspan="3" style="text-align: center;">{{ d|date:"d.m" }} ({{ day_name }})</th>
+                        {% endfor %}
+                        <th class="num">Итого факт</th>
+                    </tr>
+                    <tr class="subheader">
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        {% for d, day_name in w.date_headers %}
+                        <th class="num">факт</th>
+                        <th class="num">компания</th>
+                        <th class="num">сотрудник</th>
+                        {% endfor %}
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in w.table_rows %}
+                    <tr>
+                        <td class="num">{{ r.num }}</td>
+                        <td>{{ r.name }}</td>
+                        <td class="num">{{ r.personal_balance|floatformat:0 }}</td>
+                        <td class="num">{{ r.company_total|floatformat:0 }}</td>
+                        <td class="num">{{ r.employee_total|floatformat:0 }}</td>
+                        {% for cell in r.day_cells %}
+                        <td class="num">{{ cell.fact|floatformat:0 }}</td>
+                        <td class="num">{{ cell.company|floatformat:0 }}</td>
+                        <td class="num">{{ cell.employee|floatformat:0 }}</td>
+                        {% endfor %}
+                        <td class="num">{{ r.fact_total|floatformat:0 }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr class="total-row">
+                        <td></td>
+                        <td>Итого:</td>
+                        <td></td>
+                        <td class="num">{{ w.total_company_week|floatformat:0 }}</td>
+                        <td class="num">{{ w.total_employee_week|floatformat:0 }}</td>
+                        {% for cell in w.total_day_cells %}
+                        <td class="num">{{ cell.fact|floatformat:0 }}</td>
+                        <td class="num">{{ cell.company|floatformat:0 }}</td>
+                        <td class="num">{{ cell.employee|floatformat:0 }}</td>
+                        {% endfor %}
+                        <td class="num">{{ w.total_fact_week|floatformat:0 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">
+            Расход компании за неделю: <strong>{{ w.total_company_week|floatformat:0 }} ₽</strong>
+            · Остаток после недели: <strong>{{ w.remainder_after|floatformat:0 }} ₽</strong>
+        </p>
+    </div>
+    {% empty %}
+    <p class="no-data">Выберите период и нажмите «Показать».</p>
+    {% endfor %}
+</div>
+{% endblock %}

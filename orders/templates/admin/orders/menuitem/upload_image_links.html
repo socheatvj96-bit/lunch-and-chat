@@ -1,0 +1,25 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+<div id="content-main">
+    <h1>{{ title }}</h1>
+
+    <div class="module" style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+        <p>Загрузите CSV с колонками: <strong>Название</strong>, <strong>Группа</strong>, <strong>Ресторан</strong>, <strong>Изображение</strong>.</p>
+        <p>Для каждой строки будет найден блюдо по названию (и при необходимости по группе и ресторану), и ему будет присвоена ссылка на изображение. Эта картинка показывается в приложении, если у блюда нет загруженного изображения.</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+            <label for="id_csv_file">CSV файл (image_links.csv):</label>
+            <input type="file" name="csv_file" id="id_csv_file" accept=".csv" required />
+        </div>
+        <div class="submit-row" style="margin-top: 15px;">
+            <input type="submit" value="Загрузить и привязать ссылки" class="default" />
+            <a href="{% url 'admin:orders_menuitem_changelist' %}" class="button cancel-link">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

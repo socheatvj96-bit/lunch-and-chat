@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструкция по системе обедов — SPORA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: #818cf8;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 1rem;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        strong {
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .info-box h3 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+
+        code.highlight-code {
+            background: #000;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #fbbf24;
+            font-family: monospace;
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="badge">Internal Documentation</div>
+            <h1>SPORA Instructions</h1>
+            <p class="subtitle">Руководство по использованию системы заказа обедов</p>
+        </header>
+
+        <section class="card">
+            <h2>1. Управление сотрудниками</h2>
+            <ul>
+                <li><strong>Подтверждение аккаунтов:</strong> В разделе «Сотрудники» админ-панели необходимо установить
+                    флаг «Учётная запись подтверждена», чтобы пользователь мог совершать заказы.</li>
+                <li><strong>Баланс:</strong> Начисление (по умолчанию 150₽) происходит автоматически в рабочие дни
+                    согласно Глобальному календарю.</li>
+                <li><strong>Лимиты:</strong> При достижении «Минимального баланса» (настраивается индивидуально)
+                    возможность заказа блокируется.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>2. Управление меню</h2>
+            <ul>
+                <li><strong>Группы товаров:</strong> Меню разбито на группы (напр. «Обед на понедельник»). Чтобы группа
+                    была видна, она должна быть активна и дата должна попадать в период видимости.</li>
+                <li><strong>Импорт из Excel:</strong> Используйте кнопку «Импорт групп товаров» в админке. Система сама
+                    распределит блюда по колонкам «Наименование» и «Цена».</li>
+                <li><strong>Медиа-файлы:</strong> Для массовой загрузки фото используйте импорт через ZIP-архив с CSV
+                    файлом описания.</li>
+            </ul>
+
+            <div class="info-box">
+                <h3>🖼️ Инструкция по загрузке картинок</h3>
+                <ul>
+                    <li><strong>Подготовка:</strong> Соберите все изображения в одну папку. Названия файлов должны быть
+                        на латинице (например, <code>pasta.jpg</code>).</li>
+                    <li><strong>CSV-файл:</strong> Создайте файл <code>import.csv</code> с колонками: <code>name</code>
+                        (название блюда в системе) и <code>image</code> (имя файла картинки).</li>
+                    <li><strong>Архивация:</strong> Выделите все картинки и CSV-файл, упакуйте их в <code
+                            class="highlight-code">.ZIP</code> архив (не в папку, а именно файлы в корень архива).</li>
+                    <li><strong>Загрузка:</strong> В админке перейдите в «Импорт блюд с фото», выберите ваш ZIP-архив и
+                        нажмите «Загрузить».</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>3. Процесс заказа</h2>
+            <ul>
+                <li><strong>Каналы заказа:</strong> Доступны через Telegram-бот (/menu) и Web-интерфейс (MiniApp).</li>
+                <li><strong>Резервирование:</strong> При создании заказа средства сначала «резервируются» (статус
+                    reserved).</li>
+                <li><strong>Списание:</strong> Окончательное списание и смена статуса происходит при массовом
+                    подтверждении админом или закрытии выбора группы.</li>
+                <li><strong>Отмена заказа:</strong> Пользователь может сам отменить заказ в разделе «Мои заказы», пока
+                    он находится в статусе «Зарезервирован». Средства вернутся на баланс автоматически.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>4. Баланс и пополнение</h2>
+            <ul>
+                <li><strong>Просмотр реквизитов:</strong> В приложении рядом с балансом появилась кнопка <code
+                        class="highlight-code">+</code>. При нажатии открывается окно с актуальными реквизитами для
+                    перевода.</li>
+                <li><strong>Настройка реквизитов:</strong> Текст реквизитов правится в админке, раздел «Настройки», ключ
+                    <code class="highlight-code">payment_details</code>.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>5. Служебные функции</h2>
+            <ul>
+                <li><strong>Бэкап данных:</strong> Доступен по скрытому адресу <code>/backup-db/</code> (только для
+                    суперпользователей). Выгружает актуальное состояние базы в формате JSON.</li>
+                <li><strong>Отчетность:</strong> Полная выгрузка заказов для бухгалтерии доступна в разделе «Заказы»
+                    админ-панели (Excel/CSV).</li>
+            </ul>
+        </section>
+
+        <footer>
+            &copy; 2026 SPORA Delivery Systems. Confidential Access.
+        </footer>
+    </div>
+</body>
+
+</html>

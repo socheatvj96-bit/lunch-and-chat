@@ -1,0 +1,71 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+<div id="content-main">
+    <h1>{{ title }}</h1>
+
+    <div class="module" style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+        <h2>Инструкция по импорту</h2>
+        <ol>
+            <li>Подготовьте Excel файл (.xlsx) с меню</li>
+            <li>Каждый лист в файле будет обработан как отдельная группа товаров (меню на день)</li>
+            <li>Название листа может содержать дату (будет автоматически распознана)</li>
+            <li>Укажите названия столбцов в вашем Excel файле</li>
+            <li>Загрузите файл</li>
+        </ol>
+
+        <h3>Формат Excel файла:</h3>
+        <p><strong>Обязательные столбцы:</strong></p>
+        <ul>
+            <li><strong>Название</strong> - название товара</li>
+        </ul>
+
+        <p><strong>Необязательные столбцы:</strong></p>
+        <ul>
+            <li><strong>Дата</strong> - дата для группы (если не указана, будет взята из названия листа)</li>
+            <li><strong>Цена</strong> - цена товара (число, можно с запятой или точкой)</li>
+            <li><strong>Описание</strong> - описание товара</li>
+        </ul>
+
+        <h3>Пример структуры:</h3>
+        <p>Файл <code>nextweek_menu.xlsx</code> содержит листы:</p>
+        <ul>
+            <li><strong>Лист "01.12.2024"</strong> - меню на 1 декабря 2024</li>
+            <li><strong>Лист "02.12.2024"</strong> - меню на 2 декабря 2024</li>
+            <li>и т.д.</li>
+        </ul>
+        <p>Каждый лист содержит таблицу с товарами на этот день.</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <fieldset class="module aligned">
+            <h2>Настройки импорта</h2>
+
+            {% for field in form %}
+            <div class="form-row">
+                {{ field.errors }}
+                <div>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <p class="help">{{ field.help_text }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </fieldset>
+
+        <div class="submit-row">
+            <input type="submit" value="Импортировать" class="default" />
+            <a href="{% url 'admin:orders_menuitemgroup_changelist' %}" class="button cancel-link">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

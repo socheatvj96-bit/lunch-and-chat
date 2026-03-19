@@ -1,0 +1,77 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+<div id="content-main">
+    <h1>{{ title }}</h1>
+
+    <div class="module" style="margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 5px;">
+        <h2>Инструкция по импорту</h2>
+        <ol>
+            <li>Подготовьте CSV файл с данными о товарах</li>
+            <li>Укажите названия столбцов в вашем CSV файле</li>
+            <li>Выберите кодировку и разделитель</li>
+            <li>Загрузите файл</li>
+        </ol>
+
+        <h3>Формат CSV файла:</h3>
+        <p><strong>Обязательные столбцы:</strong></p>
+        <ul>
+            <li><strong>Название</strong> - название товара</li>
+            <li><strong>Группа</strong> - категория товара (будет создана автоматически, если не существует)</li>
+            <li><strong>Ресторан</strong> - название ресторана (будет создан автоматически, если не существует)</li>
+        </ul>
+
+        <p><strong>Необязательные столбцы:</strong></p>
+        <ul>
+            <li><strong>Цена</strong> - цена товара (число, можно с запятой или точкой)</li>
+            <li><strong>Описание</strong> - описание товара</li>
+            <li><strong>Изображение</strong> - путь к изображению в ZIP архиве (например: photos_today/img1.png)</li>
+        </ul>
+
+        <h3>ZIP архив с изображениями:</h3>
+        <p>Вы можете загрузить ZIP архив с фотографиями товаров. В CSV файле укажите путь к изображению относительно корня архива.</p>
+        <p><strong>Пример:</strong></p>
+        <ul>
+            <li>ZIP архив: <code>photos_today.zip</code></li>
+            <li>В архиве: <code>photos_today/img1.png</code>, <code>photos_today/img2.jpg</code></li>
+            <li>В CSV укажите: <code>photos_today/img1.png</code></li>
+        </ul>
+
+        <h3>Пример CSV файла:</h3>
+        <pre style="background: white; padding: 10px; border: 1px solid #ddd; border-radius: 3px;">название;группа;ресторан;цена;описание;изображение
+Борщ;Первые блюда;Столовая №1;150;Традиционный украинский борщ;photos_today/borscht.jpg
+Салат Цезарь;Салаты;Столовая №1;200,50;Салат с курицей и соусом Цезарь;photos_today/caesar.png
+Пицца Маргарита;Пицца;Пиццерия;350;Классическая пицца с томатами и моцареллой;photos_today/pizza.jpg</pre>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <fieldset class="module aligned">
+            <h2>Настройки импорта</h2>
+
+            {% for field in form %}
+            <div class="form-row">
+                {{ field.errors }}
+                <div>
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                        {% if field.field.required %}<span class="required">*</span>{% endif %}
+                    </label>
+                    {{ field }}
+                    {% if field.help_text %}
+                    <p class="help">{{ field.help_text }}</p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </fieldset>
+
+        <div class="submit-row">
+            <input type="submit" value="Импортировать" class="default" />
+            <a href="{% url 'admin:orders_menuitem_changelist' %}" class="button cancel-link">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

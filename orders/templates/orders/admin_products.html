@@ -1,0 +1,840 @@
+{% extends 'orders/base.html' %}
+
+{% block title %}Управление товарами - Заказ обедов{% endblock %}
+
+{% block extra_styles %}
+<style>
+    .admin-header {
+        padding: 2rem 0;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 2rem;
+    }
+
+    .admin-header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+    }
+
+    .admin-header p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+    }
+
+    .admin-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .search-box {
+        flex: 1;
+        max-width: 400px;
+        position: relative;
+    }
+
+    .search-box input {
+        width: 100%;
+        padding-left: 3rem;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        color: var(--text-muted);
+    }
+
+    .products-table {
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .table-header {
+        display: grid;
+        grid-template-columns: 80px 1fr 150px 120px 150px 200px;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        background: rgba(99, 102, 241, 0.1);
+        border-bottom: 2px solid var(--primary-color);
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--text-primary);
+    }
+
+    .table-row {
+        display: grid;
+        grid-template-columns: 80px 1fr 150px 120px 150px 200px;
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .table-row:hover {
+        background: rgba(99, 102, 241, 0.05);
+    }
+
+    .table-row:last-child {
+        border-bottom: none;
+    }
+
+    .product-thumb {
+        width: 60px;
+        height: 60px;
+        border-radius: 0.75rem;
+        object-fit: cover;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        border: 2px solid var(--border-color);
+    }
+
+    .product-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+
+    .product-info {
+        min-width: 0;
+    }
+
+    .product-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .product-group {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        display: inline-block;
+        background: var(--bg-tertiary);
+        padding: 0.2rem 0.6rem;
+        border-radius: 0.4rem;
+    }
+
+    .product-group.missing {
+        background: rgba(239, 68, 68, 0.2);
+        color: var(--danger-color);
+        border: 1px solid var(--danger-color);
+        animation: shake 0.5s;
+    }
+
+    .product-price {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--success-color);
+    }
+
+    .product-price.missing {
+        color: var(--danger-color);
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .product-restaurant {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .btn-icon {
+        padding: 0.5rem;
+        min-width: auto;
+        border-radius: 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active {
+        display: flex;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .modal-content {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 1.5rem;
+        max-width: 700px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: slideUp 0.3s ease;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .modal-header {
+        padding: 2rem;
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-header h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+    }
+
+    .modal-close:hover {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        transform: rotate(90deg);
+    }
+
+    .modal-body {
+        padding: 2rem;
+    }
+
+    .modal-footer {
+        padding: 1.5rem 2rem;
+        border-top: 1px solid var(--border-color);
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-end;
+    }
+
+    .image-upload-area {
+        border: 2px dashed var(--border-color);
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: rgba(15, 23, 42, 0.4);
+    }
+
+    .image-upload-area:hover {
+        border-color: var(--primary-color);
+        background: rgba(99, 102, 241, 0.05);
+    }
+
+    .image-upload-area.dragover {
+        border-color: var(--success-color);
+        background: rgba(16, 185, 129, 0.05);
+    }
+
+    .upload-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        opacity: 0.6;
+    }
+
+    .image-preview-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .image-preview-item {
+        position: relative;
+        aspect-ratio: 1;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        border: 2px solid var(--border-color);
+        transition: all 0.3s ease;
+    }
+
+    .image-preview-item:hover {
+        border-color: var(--primary-color);
+        transform: scale(1.05);
+    }
+
+    .image-preview-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .image-preview-item .remove-image {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: var(--danger-color);
+        color: white;
+        border: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .image-preview-item:hover .remove-image {
+        opacity: 1;
+    }
+
+    .primary-badge {
+        position: absolute;
+        bottom: 0.5rem;
+        left: 0.5rem;
+        background: var(--success-color);
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.4rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+
+    .field-hint {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+    }
+
+    .field-hint.important {
+        color: var(--warning-color);
+        font-weight: 500;
+    }
+
+    @media (max-width: 1024px) {
+
+        .table-header,
+        .table-row {
+            grid-template-columns: 60px 1fr 100px 180px;
+        }
+
+        .hide-mobile {
+            display: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .admin-actions {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .search-box {
+            max-width: 100%;
+        }
+
+        .table-header {
+            display: none;
+        }
+
+        .table-row {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            padding: 1.5rem;
+        }
+
+        .product-actions {
+            justify-content: flex-end;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="admin-header">
+    <div class="container">
+        <h1>⚙️ Управление товарами</h1>
+        <p>Создавайте, редактируйте и управляйте меню</p>
+    </div>
+</div>
+
+<div class="container" style="padding-bottom: 4rem;">
+    <div class="admin-actions">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="form-control" placeholder="Поиск товаров...">
+        </div>
+        <button class="btn btn-primary" onclick="openCreateModal()">
+            ➕ Добавить товар
+        </button>
+    </div>
+
+    <div class="products-table">
+        <div class="table-header">
+            <div>Фото</div>
+            <div>Название / Группа</div>
+            <div class="hide-mobile">Цена</div>
+            <div class="hide-mobile">Ресторан</div>
+            <div>Изображения</div>
+            <div>Действия</div>
+        </div>
+
+        <div id="productsTableBody">
+            {% for item in items %}
+            <div class="table-row" data-product-id="{{ item.id }}">
+                <div class="product-thumb">
+                    {% if item.get_primary_image %}
+                    <img src="{{ item.get_primary_image.image.url }}" alt="{{ item.name }}">
+                    {% else %}
+                    🍴
+                    {% endif %}
+                </div>
+
+                <div class="product-info">
+                    <div class="product-title">{{ item.name }}</div>
+                    {% if item.group %}
+                    <span class="product-group">{{ item.group.name }}</span>
+                    {% else %}
+                    <span class="product-group missing">⚠️ Группа не указана</span>
+                    {% endif %}
+                </div>
+
+                <div class="hide-mobile">
+                    {% if item.price %}
+                    <span class="product-price">{{ item.price }} ₽</span>
+                    {% else %}
+                    <span class="product-price missing">⚠️ Не указана</span>
+                    {% endif %}
+                </div>
+
+                <div class="hide-mobile product-restaurant">
+                    {{ item.restaurant.name }}
+                </div>
+
+                <div>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">
+                        {% if item.images.count > 0 %}
+                        📸 {{ item.images.count }} фото
+                        {% else %}
+                        <span style="color: var(--danger-color); animation: pulse 2s ease-in-out infinite;">⚠️ Нет
+                            фото</span>
+                        {% endif %}
+                    </span>
+                </div>
+
+                <div class="product-actions">
+                    <button class="btn btn-secondary btn-icon" onclick="openEditModal({{ item.id }})"
+                        title="Редактировать">
+                        ✏️
+                    </button>
+                    <button class="btn btn-danger btn-icon" onclick="deleteProduct({{ item.id }})" title="Удалить">
+                        🗑️
+                    </button>
+                </div>
+            </div>
+            {% empty %}
+            <div style="padding: 3rem; text-align: center; color: var(--text-muted);">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📦</div>
+                <p>Товары не найдены. Создайте первый товар!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Modal для создания/редактирования товара -->
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Создать товар</h2>
+            <button class="modal-close" onclick="closeModal()">×</button>
+        </div>
+
+        <form id="productForm" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="modal-body">
+                <input type="hidden" id="productId" name="product_id">
+
+                <div class="form-group">
+                    <label class="form-label required" for="productName">Название</label>
+                    <input type="text" id="productName" name="name" class="form-control" required>
+                    <div class="field-hint">Обязательное поле</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label required" for="productGroup">Группа</label>
+                    <select id="productGroup" name="group" class="form-control" required>
+                        <option value="">Выберите группу</option>
+                        {% for group in groups %}
+                        <option value="{{ group.id }}">{{ group.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="field-hint">Обязательное поле</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="productRestaurant">Ресторан</label>
+                    <select id="productRestaurant" name="restaurant" class="form-control">
+                        {% for restaurant in restaurants %}
+                        <option value="{{ restaurant.id }}">{{ restaurant.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label important" for="productPrice">Цена (₽)</label>
+                    <input type="number" id="productPrice" name="price" class="form-control" step="0.01" min="0">
+                    <div class="field-hint important">⚠️ Важное поле - рекомендуется заполнить</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="productDescription">Описание</label>
+                    <textarea id="productDescription" name="description" class="form-control" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label important">Изображения</label>
+                    <div class="field-hint important" style="margin-bottom: 1rem;">⚠️ Важное поле - рекомендуется
+                        добавить фото</div>
+
+                    <div class="image-upload-area" id="imageUploadArea">
+                        <div class="upload-icon">📸</div>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.5rem;">
+                            Перетащите изображения сюда или нажмите для выбора
+                        </p>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">
+                            Поддерживаются JPG, PNG, WebP. Можно загрузить несколько файлов.
+                        </p>
+                        <input type="file" id="productImages" name="images" accept="image/*" multiple
+                            style="display: none;">
+                    </div>
+
+                    <div id="imagePreviewGrid" class="image-preview-grid"></div>
+                    <div id="existingImagesGrid" class="image-preview-grid"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeModal()">Отмена</button>
+                <button type="submit" class="btn btn-success" id="submitBtn">Создать</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    let currentProductId = null;
+    let selectedFiles = [];
+
+    // Поиск
+    document.getElementById('searchInput').addEventListener('input', function (e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('.table-row');
+
+        rows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(searchTerm) ? 'grid' : 'none';
+        });
+    });
+
+    // Загрузка изображений
+    const imageUploadArea = document.getElementById('imageUploadArea');
+    const imageInput = document.getElementById('productImages');
+
+    imageUploadArea.addEventListener('click', () => imageInput.click());
+
+    imageUploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        imageUploadArea.classList.add('dragover');
+    });
+
+    imageUploadArea.addEventListener('dragleave', () => {
+        imageUploadArea.classList.remove('dragover');
+    });
+
+    imageUploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        imageUploadArea.classList.remove('dragover');
+        const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+        handleFiles(files);
+    });
+
+    imageInput.addEventListener('change', (e) => {
+        handleFiles(Array.from(e.target.files));
+    });
+
+    function handleFiles(files) {
+        selectedFiles = [...selectedFiles, ...files];
+        updateImagePreview();
+    }
+
+    function updateImagePreview() {
+        const grid = document.getElementById('imagePreviewGrid');
+        grid.innerHTML = '';
+
+        selectedFiles.forEach((file, index) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const div = document.createElement('div');
+                div.className = 'image-preview-item';
+                div.innerHTML = `
+                    <img src="${e.target.result}" alt="Preview">
+                    <button type="button" class="remove-image" onclick="removeFile(${index})">×</button>
+                    ${index === 0 ? '<span class="primary-badge">Основное</span>' : ''}
+                `;
+                grid.appendChild(div);
+            };
+            reader.readAsDataURL(file);
+        });
+    }
+
+    function removeFile(index) {
+        selectedFiles.splice(index, 1);
+        updateImagePreview();
+    }
+
+    function openCreateModal() {
+        currentProductId = null;
+        document.getElementById('modalTitle').textContent = 'Создать товар';
+        document.getElementById('submitBtn').textContent = 'Создать';
+        document.getElementById('productForm').reset();
+        document.getElementById('productId').value = '';
+        selectedFiles = [];
+        document.getElementById('imagePreviewGrid').innerHTML = '';
+        document.getElementById('existingImagesGrid').innerHTML = '';
+        document.getElementById('productModal').classList.add('active');
+    }
+
+    async function openEditModal(productId) {
+        currentProductId = productId;
+        document.getElementById('modalTitle').textContent = 'Редактировать товар';
+        document.getElementById('submitBtn').textContent = 'Сохранить';
+
+        try {
+            const response = await fetch(`/admin/products/${productId}/details/`);
+            const data = await response.json();
+
+            if (data.success) {
+                const item = data.item;
+                document.getElementById('productId').value = item.id;
+                document.getElementById('productName').value = item.name;
+                document.getElementById('productDescription').value = item.description || '';
+                document.getElementById('productPrice').value = item.price || '';
+
+                if (item.group) {
+                    document.getElementById('productGroup').value = item.group.id;
+                }
+                if (item.restaurant) {
+                    document.getElementById('productRestaurant').value = item.restaurant.id;
+                }
+
+                // Показываем существующие изображения
+                const existingGrid = document.getElementById('existingImagesGrid');
+                existingGrid.innerHTML = '';
+                item.images.forEach(img => {
+                    const div = document.createElement('div');
+                    div.className = 'image-preview-item';
+                    div.innerHTML = `
+                        <img src="${img.url}" alt="Product image">
+                        <button type="button" class="remove-image" onclick="deleteImage(${img.id})">×</button>
+                        ${img.is_primary ? '<span class="primary-badge">Основное</span>' : ''}
+                    `;
+                    existingGrid.appendChild(div);
+                });
+
+                selectedFiles = [];
+                document.getElementById('imagePreviewGrid').innerHTML = '';
+                document.getElementById('productModal').classList.add('active');
+            }
+        } catch (error) {
+            console.error('Error loading product:', error);
+            alert('Ошибка загрузки данных товара');
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('productModal').classList.remove('active');
+    }
+
+    async function deleteImage(imageId) {
+        if (!confirm('Удалить это изображение?')) return;
+
+        try {
+            const response = await fetch(`/admin/images/${imageId}/delete/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                // Перезагружаем модальное окно
+                if (currentProductId) {
+                    openEditModal(currentProductId);
+                }
+            }
+        } catch (error) {
+            console.error('Error deleting image:', error);
+            alert('Ошибка удаления изображения');
+        }
+    }
+
+    async function deleteProduct(productId) {
+        if (!confirm('Вы уверены, что хотите удалить этот товар?')) return;
+
+        try {
+            const response = await fetch(`/admin/products/${productId}/delete/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Ошибка удаления: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error deleting product:', error);
+            alert('Ошибка удаления товара');
+        }
+    }
+
+    document.getElementById('productForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData();
+        const productId = document.getElementById('productId').value;
+
+        formData.append('name', document.getElementById('productName').value);
+        formData.append('group', document.getElementById('productGroup').value);
+        formData.append('restaurant', document.getElementById('productRestaurant').value);
+        formData.append('description', document.getElementById('productDescription').value);
+
+        const price = document.getElementById('productPrice').value;
+        if (price) {
+            formData.append('price', price);
+        }
+
+        selectedFiles.forEach(file => {
+            formData.append('images', file);
+        });
+
+        const url = productId
+            ? `/admin/products/${productId}/update/`
+            : '/admin/products/create/';
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: formData
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Ошибка: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error saving product:', error);
+            alert('Ошибка сохранения товара');
+        }
+    });
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Закрытие модального окна по клику вне его
+    document.getElementById('productModal').addEventListener('click', function (e) {
+        if (e.target === this) {
+            closeModal();
+        }
+    });
+</script>
+{% endblock %}

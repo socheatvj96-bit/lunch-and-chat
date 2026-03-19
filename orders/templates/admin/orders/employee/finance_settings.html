@@ -1,0 +1,73 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<div id="content-main">
+    <h1>{{ title }}</h1>
+    <p style="margin-bottom: 16px;">Дата: {{ today }}</p>
+
+    <div class="module" style="padding: 16px; margin-bottom: 16px;">
+        <h2>Балансы и лимиты</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action_name" value="save_settings">
+            <p>
+                <label>Баланс компании (₽):</label><br>
+                <input type="number" step="0.01" name="balance" value="{{ employee.balance }}">
+            </p>
+            <p>
+                <label>Личный баланс сотрудника (₽):</label><br>
+                <input type="number" step="0.01" name="personal_balance" value="{{ employee.personal_balance }}">
+            </p>
+            <p>
+                <label>Ежедневное начисление от фирмы (₽):</label><br>
+                <input type="number" step="0.01" name="daily_balance_amount" value="{{ employee.daily_balance_amount }}">
+            </p>
+            <p>
+                <label>Лимит минуса по личному балансу (₽):</label><br>
+                <input type="number" step="0.01" name="min_balance_limit" value="{{ employee.min_balance_limit }}">
+            </p>
+            <button type="submit" class="default">Сохранить настройки</button>
+        </form>
+    </div>
+
+    <div class="module" style="padding: 16px; margin-bottom: 16px;">
+        <h2>Депозит на личный баланс</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action_name" value="deposit_personal">
+            <p>
+                <label>Сумма депозита (₽):</label><br>
+                <input type="number" step="0.01" min="0" name="personal_deposit" value="0">
+            </p>
+            <button type="submit" class="default">Пополнить личный баланс</button>
+        </form>
+    </div>
+
+    <div class="module" style="padding: 16px; margin-bottom: 16px;">
+        <h2>Ручное начисление от фирмы</h2>
+        <p>Текущее начисление: <strong>{{ employee.daily_balance_amount }} ₽</strong></p>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action_name" value="accrual_company">
+            <button type="submit" class="default">Начислить сейчас</button>
+        </form>
+    </div>
+
+    <div class="module" style="padding: 16px; margin-bottom: 16px;">
+        <h2>Статус на сегодня</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action_name" value="toggle_sick_today">
+            <p>
+                <label>
+                    <input type="checkbox" name="is_sick_today" {% if is_sick_today %}checked{% endif %}>
+                    Болеет сегодня (больничный)
+                </label>
+            </p>
+            <button type="submit" class="default">Сохранить отметку</button>
+        </form>
+    </div>
+
+    <p><a href="{% url 'admin:orders_employee_change' employee.id %}">← Назад к карточке сотрудника</a></p>
+</div>
+{% endblock %}
