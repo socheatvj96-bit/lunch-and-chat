@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_DB: lunch_order
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 10s
@@ -37,9 +37,6 @@ services:
       - .env
     environment:
       - DEBUG=1
-      - SECRET_KEY=DJANGO_SECRET_KEY_REMOVED
-      - TELEGRAM_BOT_TOKEN=TELEGRAM_BOT_TOKEN_REMOVED
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/lunch_order
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
       - STATIC_HOST_PATH=/opt/lunch_order/staticfiles_host
@@ -66,8 +63,6 @@ services:
       - .env
     environment:
       - DEBUG=1
-      - SECRET_KEY=DJANGO_SECRET_KEY_REMOVED
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/lunch_order
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
     depends_on:
@@ -87,8 +82,6 @@ services:
       - .env
     environment:
       - DEBUG=1
-      - SECRET_KEY=DJANGO_SECRET_KEY_REMOVED
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/lunch_order
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
     depends_on:
@@ -109,9 +102,6 @@ services:
     environment:
       - DEBUG=1
       - DJANGO_ALLOW_ASYNC_UNSAFE=true
-      - SECRET_KEY=DJANGO_SECRET_KEY_REMOVED
-      - TELEGRAM_BOT_TOKEN=TELEGRAM_BOT_TOKEN_REMOVED
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/lunch_order
     depends_on:
       - db
       - web

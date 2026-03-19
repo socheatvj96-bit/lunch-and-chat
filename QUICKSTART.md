@@ -9,7 +9,7 @@ pip install -r requirements.txt
 Создайте файл `.env`:
 ```bash
 SECRET_KEY=django-insecure-change-this-in-production
-TELEGRAM_BOT_TOKEN=TELEGRAM_BOT_TOKEN_REMOVED
+TELEGRAM_BOT_TOKEN=your_bot_token_here
 ```
 
 ## 3. Миграции и суперпользователь

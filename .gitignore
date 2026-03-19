@@ -15,10 +15,14 @@ media/
 .DS_Store
 
 # Deploy scripts with credentials
-deploy_sshpass.sh
-setup_nginx_ssl.sh
+deploy*.sh
+setup_*.sh
+*_deploy.sh
 execute_on_server.sh
 manual_deploy.sh
+create_superuser*.sh
+fix_deployment.sh
+docker-run.sh
 
 # Sensitive data files
 employees_credentials.csv
@@ -30,10 +34,35 @@ victor_kiselev_lol_activity_report.md
 deploy_log.txt
 OK_BOT_COMMANDS.txt
 
+# ТЗ, отчёты и прочие docs-файлы
+*.docx
+*.xlsx
+*.pdf
+ТЗ*.md
+CHECKLIST_TZ.md
+DEEPSEEK.md
+DEPLOY_CHANGELOG*.md
+DEPLOY_SAFE.md
+STATUS.md
+TEST_PUSH.md
+
 # Large binary / data files not needed in repo
 images/
 image_links.csv
 nam_nyam_full_menu.csv
+nam_nyam_full_menu.json
+nam_nyam_menu.json
+nextweek_menu.xlsx
+
+# Design mockups
+orders/pics_for_design_fantasy/
+
+# One-off utility scripts
+categorize_items.py
+create_docx_report.py
+import_menu.py
+parse_nam_nyam.py
+update_category_order.py
 
 # Temp files
 *.tar.gz

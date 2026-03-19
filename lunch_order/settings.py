@@ -21,7 +21,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-change-this-in-production'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pm.obed.pro', '155.212.166.158', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'pm.obed.pro,localhost,127.0.0.1').split(',')
 
 
 # Application definition
@@ -199,12 +199,11 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # CSRF
 CSRF_TRUSTED_ORIGINS = [
-    'https://pm.obed.pro',
-    'http://pm.obed.pro',
-    'https://victor.kiselev.lol',
-    'http://localhost:8000',
-    'http://localhost:8080',
-    'http://155.212.166.158:8082',
+    origin.strip()
+    for origin in os.getenv(
+        'CSRF_TRUSTED_ORIGINS',
+        'https://pm.obed.pro,http://pm.obed.pro,https://victor.kiselev.lol,http://localhost:8000,http://localhost:8080'
+    ).split(',')
 ]
 
 # Login settings
